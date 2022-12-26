@@ -1,0 +1,26 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.input_wrapper {
+  display: flex;
+
+  input {
+    padding: 8px 15px;
+    min-width: 200px;
+    outline: none;
+    border: none;
+    background-color: whitesmoke;
+  }
+
+  button {
+    padding: 8px;
+    border: none;
+    background-color: $primary-color;
+    color: $onPrimary-color;
+    cursor: pointer;
+    font-weight: 500;
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}

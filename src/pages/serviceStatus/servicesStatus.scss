@@ -1,0 +1,54 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.servicesStatus {
+  padding: $padding-header;
+  color: $primary-color;
+  .serviceStatus_headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      height: 40px;
+      padding: 0 1rem;
+      border: none;
+      background-color: $green-color;
+      font-weight: 500;
+      color: $onPrimary-color;
+      border-radius: 9px;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  }
+
+  .servicesStatus_wrapper {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .servicesStatus {
+    .servicesStatus_wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .servicesStatus {
+    .servicesStatus_wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .servicesStatus {
+    .servicesStatus_wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+}

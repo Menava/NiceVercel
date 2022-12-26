@@ -1,0 +1,99 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.serviceStatusDetail_wrapper {
+  padding: $padding-header;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .servicesStatusDetail_toDoServicesWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      width: 300px;
+      padding: 15px 10px;
+      border: none;
+      background-color: $green-color;
+      color: $onPrimary-color;
+      border-radius: 9px;
+      font-weight: 500;
+      font-size: 15px;
+      &:hover {
+        background-color: $hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+  h3 {
+    color: $primary-color;
+  }
+
+  .serviceStatusDetail_employeesWrapper {
+    h3 {
+      margin-bottom: 20px;
+      color: $primary-color;
+    }
+
+    .serviceStatusDetail_employees {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      p {
+        font-weight: 500;
+        font-size: 0.9rem;
+        background-color: $primary-color;
+        padding: 10px 10px;
+        border-radius: 9px;
+        color: $onPrimary-color;
+      }
+    }
+  }
+
+  .serviceStatusDetail_buttonsWrapper {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    button {
+      width: 300px;
+      padding: 15px 10px;
+      border: none;
+      background-color: $green-color;
+      color: $onPrimary-color;
+      border-radius: 9px;
+      font-weight: 500;
+      font-size: 15px;
+      &:hover {
+        background-color: $hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 710px) {
+  .serviceStatusDetail_wrapper {
+    .servicesStatusDetail_toDoServicesWrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      button {
+        width: 100%;
+      }
+    }
+    .serviceStatusDetail_employeesWrapper {
+      h3 {
+        margin-bottom: 20px;
+        color: $primary-color;
+      }
+    }
+
+    .serviceStatusDetail_buttonsWrapper {
+      flex-direction: column;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

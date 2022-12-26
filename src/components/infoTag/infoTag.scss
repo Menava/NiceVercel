@@ -1,0 +1,19 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.infoTag_wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h4 {
+    width: 100px;
+    color: $primary-color;
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  p {
+    color: $onPrimaryLink-color;
+  }
+}

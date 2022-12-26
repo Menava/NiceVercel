@@ -1,0 +1,101 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.serviceStatus_wrapper {
+  position: relative;
+
+  .serviceStatus_DotIcon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    color: $onPrimary-color;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 998;
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  h4 {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .serviceStatus {
+    height: 300px;
+    position: relative;
+    background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .serviceStatus_optionsWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+
+      .servieStatus_servicesWrapper {
+        width: 100%;
+        height: 80%;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 2rem;
+      }
+      .serviceStatus_finishedWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        p {
+          margin-right: 20px;
+          font-weight: 900;
+          color: $warning-color;
+        }
+        .serviceStatus_finishedBtn {
+          padding: 0.5rem 2rem;
+          border: none;
+          cursor: pointer;
+          background-color: $green-color;
+          color: $onPrimary-color;
+          font-weight: 700;
+          border-radius: 9px;
+          &:hover {
+            background-color: $hover-color;
+          }
+        }
+      }
+    }
+    .servicePlace_infoWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        color: $onPrimary-color;
+        font-size: 1.5rem;
+      }
+      p {
+        color: $onPrimary-color;
+        margin-top: 10px;
+      }
+    }
+  }
+  .serviceStatus_percantageBarWrapper {
+    width: 100%;
+    height: 20px;
+    background-color: #dfe2df;
+    position: relative;
+    .serviceStatus_percantageBar {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #00c2ff;
+    }
+  }
+}

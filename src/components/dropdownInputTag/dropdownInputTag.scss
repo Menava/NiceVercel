@@ -1,0 +1,91 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+.dropDownWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .addImage_iconWrapper {
+    background-color: $green-color;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    cursor: pointer;
+    .addImage_icon {
+      color: $onPrimary-color;
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
+.dropdownInputTag {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+
+  .dropdownValue {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $primary-color;
+    height: 50px;
+    padding: 0 0.5rem;
+
+    .dropdownIcon {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      color: $green-color;
+    }
+  }
+
+  .dropdownList {
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    background-color: $primary-color;
+    color: $onPrimary-color;
+    p {
+      cursor: pointer;
+      padding: 1rem 0.5rem;
+      font-weight: 500;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+
+  &:hover {
+    .dropdownIcon {
+      color: $hover-color;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .dropDownWrapper {
+    width: 100%;
+  }
+  .dropdownInputTag {
+    width: 100%;
+  }
+}
+
+@media (max-width: 580px) {
+  .dropDownWrapper {
+    .addImage_iconWrapper {
+      width: 45px;
+      height: 45px;
+      .addImage_icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

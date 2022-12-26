@@ -1,0 +1,101 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.addServiceWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.616);
+  z-index: 999;
+
+  .addNewServiceModal {
+    background-color: #ffffff;
+    padding: 2rem;
+    width: 550px;
+    border-radius: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    position: sticky;
+    top: 0;
+    height: 650px;
+    overflow-y: scroll;
+
+    .addNewService_searchWrapper {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border: 1px solid $primary-color;
+      padding: 0 0.5rem;
+      border-radius: 9px;
+      margin: 10px 0;
+
+      .addNewService_searchIcon {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 10px;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        color: $primary-color;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+      }
+    }
+    .addNewServiceModal_servicesWrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 15px;
+      .addNewServiceModal_serviceWrapper {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        &:hover {
+          .imageWrapper {
+            .imageOverlay {
+              display: flex;
+            }
+          }
+        }
+        .imageWrapper {
+          position: relative;
+
+          img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background-color: $onPrimaryLink-color;
+            border-radius: 9px;
+          }
+          .imageOverlay {
+            position: absolute;
+            width: 100%;
+            height: 150px;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.616);
+            border-radius: 9px;
+            display: none;
+            p {
+              color: $onPrimary-color;
+              font-weight: 600;
+            }
+          }
+        }
+
+        p {
+          font-size: 17px;
+          color: $letter-color;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

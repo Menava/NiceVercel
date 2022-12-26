@@ -1,0 +1,67 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.sidebar_navlink {
+  display: flex;
+  align-items: center;
+
+  padding-left: 2rem;
+  margin-top: 20px;
+  cursor: pointer;
+
+  &:hover {
+    .sidebar_icon {
+      color: $hover-color;
+    }
+    p {
+      color: $hover-color;
+    }
+  }
+  &.active {
+    p {
+      // background: linear-gradient(
+      //   90deg,
+      //   hsla(40, 94%, 74%, 1) 0%,
+      //   hsla(60, 89%, 72%, 1) 100%
+      // );
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      // color: yellow;
+      font-weight: 900;
+      color: $warning-color;
+    }
+    .sidebar_icon {
+      color: $warning-color;
+    }
+  }
+
+  .sidebar_icon {
+    @include icon($onPrimary-color);
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    color: $onPrimary-color;
+  }
+}
+
+@media (max-width: $laptops-breakpoint) {
+  .sidebar_navlink {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    .sidebar_icon {
+      width: 25px;
+      height: 25px;
+      margin: 0;
+    }
+    p {
+      display: none;
+      color: red;
+    }
+  }
+}
