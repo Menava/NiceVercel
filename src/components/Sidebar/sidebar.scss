@@ -1,0 +1,82 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.sidebar {
+  hr {
+    margin-top: 1rem;
+    width: 83%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  width: 260px;
+  height: 100vh;
+  background: $primary-color;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 998;
+
+  .sidebar_logo {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    img {
+      width: 82px;
+      height: 82px;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 1px solid $onPrimaryLink-color;
+    }
+    .sidebar_logo_letter {
+      h1 {
+        @include gradient-font();
+      }
+      p {
+        color: $onPrimary-color;
+        font-weight: 200;
+        font-size: 1rem;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .sidebar_navlinks {
+    h2 {
+      padding-left: 1.3rem;
+      margin-top: 19px;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: rgb(217, 217, 250);
+    }
+  }
+}
+
+@media (max-width: $laptops-breakpoint) {
+  .sidebar {
+    max-width: 60px;
+    .sidebar_logo {
+      gap: 0;
+      img {
+        width: 45px;
+        height: 45px;
+      }
+      .sidebar_logo_letter {
+        display: none;
+      }
+    }
+    hr {
+      margin-top: 0.5rem;
+    }
+    .sidebar_navlinks {
+      h2 {
+        margin-top: 10px;
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+      }
+    }
+  }
+}

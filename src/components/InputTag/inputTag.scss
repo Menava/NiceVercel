@@ -1,0 +1,37 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+.inputTagWrapper {
+  flex: 1;
+
+  .inputTag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $primary-color;
+
+    input {
+      border: none;
+      outline: none;
+      padding: 15px 5px;
+      font-size: 15px;
+      background-color: transparent;
+    }
+
+    .dropdown_inputList {
+      position: absolute;
+
+      top: 100%;
+      width: 100%;
+      background-color: $primary-color;
+      z-index: 999;
+      cursor: pointer;
+      color: $onPrimary-color;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .inputTagWrapper {
+    width: 100%;
+  }
+}

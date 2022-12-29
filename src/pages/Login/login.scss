@@ -1,0 +1,107 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.login {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-647333471-1586277995.jpg?crop=0.926xw:0.693xh;0.0593xw,0.153xh&resize=1200:*);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .login_header {
+    text-align: left;
+    color: $primary-color;
+    font-weight: 500;
+  }
+
+  .login_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.445);
+  }
+
+  form {
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.836);
+    padding: 1.5rem;
+    border-radius: 9px;
+    width: 400px;
+
+    .login_input {
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      border: 1px solid $primary-color;
+      border-radius: 9px;
+      position: relative;
+      &.error {
+        border: 1px solid red !important;
+      }
+      .login_icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+        color: $primary-color;
+
+        &.eye {
+          cursor: pointer;
+        }
+      }
+
+      input {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-radius: 9px;
+        background: transparent;
+        font-size: 1.1rem;
+      }
+      .login_error {
+        position: absolute;
+        top: 110%;
+        color: red;
+        left: 0;
+      }
+    }
+
+    button {
+      height: 3.5rem;
+      border: none;
+      border-radius: 9px;
+      background-color: $primary-color;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .something_went_wrong_error {
+      color: red;
+      text-align: center;
+      display: none;
+      font-weight: bold;
+      &.active {
+        display: block;
+      }
+    }
+  }
+  @media (max-width: $mobiles-breakpoint) {
+    form {
+      width: 350px;
+      margin: 0 1rem;
+    }
+  }
+}

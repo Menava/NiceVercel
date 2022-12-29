@@ -1,0 +1,139 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.giveEmployeeSalaryModal_wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.616);
+  z-index: 999;
+
+  .giveEmployeeSalaryModal {
+    h2 {
+      margin-bottom: 20px;
+      color: #003566;
+      font-weight: 600;
+      font-size: 30px;
+      white-space: nowrap;
+    }
+    background-color: #ffffff;
+    padding: 2rem;
+    width: 500px;
+    border-radius: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    position: sticky;
+    top: 0;
+
+    .employeeSalaryInput_wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      position: relative;
+      input {
+        height: 60px;
+        border-radius: 9px;
+        padding: 0 1rem;
+        outline: none;
+        border: none;
+        font-size: 1.2rem;
+        border: 1px solid #003566;
+      }
+      .employeeSalaryInput_remvoeIconWrapper {
+        position: absolute;
+        background-color: $green-color;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 10px;
+        top: 50%;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: $hover-color;
+          cursor: pointer;
+        }
+
+        .supplierInput_remvoeIcon {
+          color: $onPrimary-color;
+        }
+      }
+    }
+    .employees_wrapper {
+      margin-bottom: 20px;
+      width: 100%;
+      height: 100%;
+      .employees_searchBarWrapper {
+        .search_wrapper {
+          display: flex;
+          align-items: center;
+          border: 1px solid black;
+          padding: 10px 10px;
+          flex: 1;
+          border-radius: 9px;
+          input {
+            border: none;
+            outline: none;
+            padding-left: 10px;
+          }
+        }
+      }
+      .employees {
+        margin-top: 20px;
+        border: 1px solid black;
+        min-height: 150px;
+        max-height: 150px;
+        overflow-y: scroll;
+        .employee {
+          padding: 10px 0;
+          cursor: pointer;
+          p {
+            padding: 0 10px;
+            font-size: 18px;
+            font-weight: 500;
+          }
+
+          &:hover {
+            background-color: $hover-color;
+            color: white;
+          }
+        }
+      }
+    }
+    .input_wrapper {
+      .employeeSalary_input {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        label {
+          color: #464545;
+          margin-bottom: 5px;
+        }
+
+        input {
+          height: 60px;
+          border-radius: 9px;
+          padding: 0 1rem;
+          outline: none;
+          border: none;
+          font-size: 1.2rem;
+          border: 1px solid #003566;
+        }
+      }
+    }
+    .give_salaryBtn {
+      width: 100%;
+      height: 60px;
+      border: none;
+      background-color: #003566;
+      color: #ffffff;
+      border-radius: 9px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}

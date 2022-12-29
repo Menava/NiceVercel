@@ -1,0 +1,22 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+.checkListSign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      border: 1.5px solid $hover-color;
+    }
+  }
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1.5px solid transparent;
+    border-radius: 9px;
+  }
+}

@@ -1,0 +1,46 @@
+// implementing resualbe line of css
+// If argument didn't pass with no value
+// 1rem default height value will be used
+@import "./scssVariables.scss";
+
+@mixin gradient-font() {
+  font-size: 32px;
+  background: linear-gradient(
+    90deg,
+    hsla(40, 94%, 74%, 1) 0%,
+    hsla(60, 89%, 72%, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+@mixin icon($color) {
+  width: 30px;
+  height: 30px;
+  color: $color;
+}
+
+@mixin tableName() {
+  font-weight: 700;
+  color: $primary-color;
+}
+
+@mixin removeIconWrapper() {
+  position: absolute;
+  top: -7px;
+  right: -10px;
+  background-color: black;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@mixin removeIcon() {
+  color: $warning-color;
+  width: 10px;
+  height: 10px;
+}

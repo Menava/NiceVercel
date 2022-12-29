@@ -1,0 +1,113 @@
+@import "../../scssVariables.scss";
+@import "../../mixins.scss";
+
+.services_header_wrapper {
+  padding: $padding-header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .services_header {
+    @include tableName;
+  }
+
+  .table_searchInput {
+    width: 500px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid $primary-color;
+    padding: 0 0.5rem;
+    border-radius: 9px;
+    .table_searchInputIcon {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin-right: 10px;
+    }
+    input {
+      border: none;
+      outline: none;
+      color: $primary-color;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+    }
+  }
+}
+
+.services_wrapper {
+  padding: $padding-header;
+  // display: flex;
+  // gap: 1.5rem;
+  // flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1375px) {
+  .services_wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1120px) {
+  .services_wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 850px) {
+  .services_header_wrapper {
+    // flex-direction: column;
+    // align-items: start;
+
+    gap: 1rem;
+    .table_searchWrapper {
+      .table_searchInput {
+        width: 400px;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .services_header_wrapper {
+    // flex-direction: column;
+    // align-items: start;
+
+    gap: 1rem;
+    .table_searchWrapper {
+      .table_searchInput {
+        width: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .services_wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .services_header_wrapper {
+    flex-direction: column;
+    align-items: start;
+
+    gap: 1rem;
+    .table_searchWrapper {
+      width: 100%;
+
+      .table_searchInput {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  .services_wrapper {
+    grid-template-columns: 1fr;
+  }
+}

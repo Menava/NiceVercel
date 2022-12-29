@@ -1,0 +1,63 @@
+@import "../../mixins.scss";
+@import "../../scssVariables.scss";
+
+.addedServiceAddItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $primary-color;
+  padding: 8px;
+  .addServiceAddItem_itemName {
+    font-weight: 500;
+    color: $primary-color;
+    width: 100px;
+
+    line-height: 25px;
+    // background-color: red;
+  }
+  .increaseDecreaseWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .minusButton,
+    .plusButton {
+      border: none;
+      border-radius: 100%;
+      cursor: pointer;
+      font-size: 25px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: $onPrimary-color;
+      box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+    }
+    .minusButton {
+      background-color: $error-color;
+    }
+    .plusButton {
+      background-color: $green-color;
+    }
+    .itemQty {
+      width: 40px;
+      text-align: center;
+      // background-color: red;
+    }
+  }
+  .totalsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 120px;
+    justify-content: flex-end;
+
+    font-weight: 700;
+    color: $primary-color;
+    .addedServiceAddItem_trashIcon {
+      color: $primary-color;
+    }
+  }
+}
