@@ -34,7 +34,7 @@ export default class AppService {
   }
 
   static login(username, password) {
-    return fetch(`http://127.0.0.1:5000/login/${username}/${password}`, {
+    return fetch(`/login/${username}/${password}`, {
       credentials: "include",
     }).then((resp) => resp.json());
   }
