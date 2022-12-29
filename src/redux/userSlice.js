@@ -5,7 +5,7 @@ const userSlice = createSlice({
   initialState: {
     username: "aa",
     position: "aa",
-    name: "",
+    name: "aa",
   },
   reducers: {
     login: (state, action) => {
