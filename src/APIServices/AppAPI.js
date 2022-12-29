@@ -41,7 +41,7 @@ export default class AppService {
   // }
 
   static login(username,password) {
-    fetch('http://localhost:3001/fake', { method: 'GET' })
+    fetch('https://catfact.ninja/fact', { method: 'GET' })
       .then(data => data.json()) // Parsing the data into a JavaScript object
       .then(json => alert(JSON.stringify(json))) // Displaying the stringified data in an alert popup
   }
