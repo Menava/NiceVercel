@@ -34,17 +34,10 @@ export default class AppService {
   }
 
   static login(username, password) {
-    console.log("log in in ")
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/login/${username}/${password}`, {
+    return fetch(`/login/${username}/${password}`, {
       credentials: "include",
     }).then((resp) => resp.json());
   }
-
-  // static login(username,password) {
-  //   fetch('https://catfact.ninja/fact', { method: 'GET' })
-  //     .then(data => data.json()) // Parsing the data into a JavaScript object
-  //     .then(json => alert(JSON.stringify(json))) // Displaying the stringified data in an alert popup
-  // }
 
   static logout() {
     fetch("/logout", {
