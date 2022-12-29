@@ -1,6 +1,6 @@
 export default class ServicePlaceService {
   static GetServicePlaces() {
-    return fetch("http://127.0.0.1:5000/serviceplace/get", {
+    return fetch("/serviceplace/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class ServicePlaceService {
     }).then((resp) => resp.json());
   }
   static GetServicePlace(id) {
-    return fetch(`http://127.0.0.1:5000//serviceplace/get/${id}/`, {
+    return fetch(`//serviceplace/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default class ServicePlaceService {
   }
 
   static UpdateServicePlace(id, body) {
-    return fetch(`http://127.0.0.1:5000/serviceplace/update/${id}/`, {
+    return fetch(`/serviceplace/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default class ServicePlaceService {
 
   static UpdateServicePlaceV2(id, newID) {
     return fetch(
-      `http://127.0.0.1:5000/serviceplace/update/v2/${id}/${newID}`,
+      `/serviceplace/update/v2/${id}/${newID}`,
       {
         method: "PUT",
       }
@@ -36,7 +36,7 @@ export default class ServicePlaceService {
   }
 
   static InsertServicePlace(body) {
-    return fetch("http://127.0.0.1:5000/serviceplace/add/", {
+    return fetch("/serviceplace/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,13 +46,13 @@ export default class ServicePlaceService {
   }
 
   static DeleteServicePlace(id) {
-    return fetch(`http://127.0.0.1:5000/serviceplace/delete/${id}/`, {
+    return fetch(`/serviceplace/delete/${id}/`, {
       method: "PUT",
     }).then((resp) => resp.json());
   }
 
   static RealDeleteServicePlace(id) {
-    return fetch(`http://127.0.0.1:5000/serviceplace/real-delete/${id}/`, {
+    return fetch(`/serviceplace/real-delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

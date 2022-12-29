@@ -1,6 +1,6 @@
 export default class CustomerCarService {
   static GetCustomerCar() {
-    return fetch("http://127.0.0.1:5000/customer/get", {
+    return fetch("/customer/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class CustomerCarService {
   }
 
   static UpdateCustomerCar(id, body) {
-    return fetch(`http://127.0.0.1:5000/customer/update/${id}/`, {
+    return fetch(`/customer/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class CustomerCarService {
   }
 
   static InsertCustomerCar(body) {
-    return fetch("http://127.0.0.1:5000/customercar/add", {
+    return fetch("/customercar/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,13 +29,13 @@ export default class CustomerCarService {
   }
 
   // static InsertCustomerCar() {
-  //   return fetch("http://127.0.0.1:5000/customercar/add", {
+  //   return fetch("/customercar/add", {
   //     method: "POST",
   //   }).then((resp) => resp.json());
   // }
 
   static DeleteCustomerCar(id, body) {
-    return fetch(`http://127.0.0.1:5000/customer/delete/${id}/`, {
+    return fetch(`/customer/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

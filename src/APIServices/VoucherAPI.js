@@ -1,6 +1,6 @@
 export default class VoucherService {
   static GetVouchers() {
-    return fetch("http://127.0.0.1:5000/voucher/get", {
+    return fetch("/voucher/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class VoucherService {
     }).then((resp) => resp.json());
   }
   static GetVoucher(id) {
-    return fetch(`http://127.0.0.1:5000//voucher/get/${id}/`, {
+    return fetch(`//voucher/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default class VoucherService {
   }
 
   static UpdateVoucher(id, body) {
-    return fetch(`http://127.0.0.1:5000/voucher/update/${id}/`, {
+    return fetch(`/voucher/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default class VoucherService {
   }
 
   static InsertVoucher(body) {
-    return fetch("http://127.0.0.1:5000/voucher/add/", {
+    return fetch("/voucher/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default class VoucherService {
   }
 
   static DeleteVoucher(id, body) {
-    return fetch(`http://127.0.0.1:5000/voucher/delete/${id}/`, {
+    return fetch(`/voucher/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default class VoucherService {
 
   static GetSales(day, month, year) {
     return fetch(
-      `http://127.0.0.1:5000/voucher/sales/${day}/${month}/${year}/`,
+      `/voucher/sales/${day}/${month}/${year}/`,
       {
         method: "GET",
         headers: {
@@ -59,7 +59,7 @@ export default class VoucherService {
 
   static GetCustomeVouchers(customerID) {
     return fetch(
-      `http://127.0.0.1:5000/voucher/customervoucher/${customerID}`,
+      `/voucher/customervoucher/${customerID}`,
       {
         method: "GET",
         headers: {

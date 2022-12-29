@@ -1,6 +1,6 @@
 export default class FinalImageService {
   static GetFinalImage(id) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/image/get/${id}/`, {
+    return fetch(`/finalchecklist/image/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class FinalImageService {
   }
 
   static UpdateFinalImage(id, body) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/image/update/${id}/`, {
+    return fetch(`/finalchecklist/image/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class FinalImageService {
   }
 
   static InsertFinalImage(formData) {
-    return fetch("http://127.0.0.1:5000/finalchecklist/image/upload/", {
+    return fetch("/finalchecklist/image/upload/", {
       method: "POST",
       body: formData,
     }).then((resp) => {
@@ -32,7 +32,7 @@ export default class FinalImageService {
   }
 
   static DeleteFinalImage(id, body) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/image/delete/${id}/`, {
+    return fetch(`/finalchecklist/image/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

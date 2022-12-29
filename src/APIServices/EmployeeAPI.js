@@ -1,6 +1,6 @@
 export default class EmployeeService {
   static GetEmployee() {
-    return fetch("http://127.0.0.1:5000/employee/get", {
+    return fetch("/employee/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class EmployeeService {
   }
 
   static UpdateEmployee(id, body) {
-    return fetch(`http://127.0.0.1:5000/employee/update/${id}/`, {
+    return fetch(`/employee/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class EmployeeService {
   }
 
   static InsertEmployee(body) {
-    return fetch("http://127.0.0.1:5000/employee/add/", {
+    return fetch("/employee/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class EmployeeService {
   }
 
   static DeleteEmployee(id, body) {
-    return fetch(`http://127.0.0.1:5000/employee/delete/${id}/`, {
+    return fetch(`/employee/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

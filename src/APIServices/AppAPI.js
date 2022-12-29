@@ -1,24 +1,24 @@
 export default class AppService {
   static SetSession(value) {
-    fetch(`http://127.0.0.1:5000/set-session/${value}`, {
+    fetch(`/set-session/${value}`, {
       credentials: "include",
     });
   }
 
   // static GetSession() {
-  //   return fetch("http://127.0.0.1:5000/get-session/", {
+  //   return fetch("/get-session/", {
   //     credentials: "include",
   //   }).then((resp) => resp.json());
   // }
 
   static DeleteSession() {
-    fetch("http://127.0.0.1:5000/delete-session/", {
+    fetch("/delete-session/", {
       credentials: "include",
     });
   }
 
   static SetUserItems(formData) {
-    return fetch("http://127.0.0.1:5000/set-userItems/", {
+    return fetch("/set-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -26,7 +26,7 @@ export default class AppService {
   }
 
   static AppendUserItems(formData) {
-    return fetch("http://127.0.0.1:5000/append-userItems/", {
+    return fetch("/append-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -41,28 +41,28 @@ export default class AppService {
   }
 
   static logout() {
-    fetch("http://127.0.0.1:5000/logout", {
+    fetch("/logout", {
       credentials: "include",
     });
   }
 
   //Items Section
   static InitItemArray() {
-    return fetch("http://127.0.0.1:5000/init_itemArray/get", {
+    return fetch("/init_itemArray/get", {
       method: "GET",
       credentials: "include",
     }).then((resp) => resp.json());
   }
 
   // static EditItemArray(option) {
-  //   return fetch(`http://127.0.0.1:5000/init_itemArray/edit/${option}`, {
+  //   return fetch(`/init_itemArray/edit/${option}`, {
   //     method: "GET",
   //     credentials: "include",
   //   }).then((resp) => resp.json());
   // }
 
   static EditItemArray(option, formData) {
-    return fetch(`http://127.0.0.1:5000/init_itemArray/edit/${option}`, {
+    return fetch(`/init_itemArray/edit/${option}`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -71,13 +71,13 @@ export default class AppService {
 
   //Database
   static ResetDatabase(option) {
-    return fetch(`http://127.0.0.1:5000/reset/${option}`, {
+    return fetch(`/reset/${option}`, {
       method: "GET",
     }).then((resp) => resp.json());
   }
 
   static ClearFolder(){
-    fetch("http://127.0.0.1:5000/drive/clearfolder", {
+    fetch("/drive/clearfolder", {
     });
   }
 }

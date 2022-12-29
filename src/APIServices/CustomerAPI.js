@@ -1,6 +1,6 @@
 export default class CustomerService {
   static GetCustomer() {
-    return fetch("http://127.0.0.1:5000/customer/get", {
+    return fetch("/customer/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class CustomerService {
   }
 
   static UpdateCustomer(id, body) {
-    return fetch(`http://127.0.0.1:5000/customer/update/${id}/`, {
+    return fetch(`/customer/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class CustomerService {
   }
 
   static InsertCustomer(body) {
-    return fetch("http://127.0.0.1:5000/customer/add", {
+    return fetch("/customer/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class CustomerService {
   }
 
   static DeleteCustomer(id) {
-    return fetch(`http://127.0.0.1:5000/customer/delete/${id}/`, {
+    return fetch(`/customer/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

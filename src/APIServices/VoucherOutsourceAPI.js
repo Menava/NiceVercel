@@ -1,7 +1,7 @@
 export default class VoucherOutsourceService {
 
     static GetVoucherOutsources(){
-      return fetch("http://127.0.0.1:5000/voucheroutsource/get", {
+      return fetch("/voucheroutsource/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export default class VoucherOutsourceService {
     }
 
     static GetVoucherOutsource(voucher_id){
-      return fetch(`http://127.0.0.1:5000//voucheroutsource/get/${voucher_id}/`, {
+      return fetch(`//voucheroutsource/get/${voucher_id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class VoucherOutsourceService {
     }
   
     static UpdateVoucherOutsource(id, body) {
-      return fetch(`http://127.0.0.1:5000/voucheroutsource/update/${id}/`, {
+      return fetch(`/voucheroutsource/update/${id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class VoucherOutsourceService {
     }
   
     static InsertVoucherOutsource(body) {
-      return fetch("http://127.0.0.1:5000/voucheroutsource/add/", {
+      return fetch("/voucheroutsource/add/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default class VoucherOutsourceService {
     }
   
     static DeleteVoucherOutsource(id, body) {
-      return fetch(`http://127.0.0.1:5000/voucheroutsource/delete/${id}/`, {
+      return fetch(`/voucheroutsource/delete/${id}/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

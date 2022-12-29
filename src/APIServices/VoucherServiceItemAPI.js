@@ -1,6 +1,6 @@
 export default class VoucherServiceItemService {
   static GetVoucherServiceItems() {
-    return fetch("http://127.0.0.1:5000/voucherserviceitem/get", {
+    return fetch("/voucherserviceitem/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export default class VoucherServiceItemService {
 
   static GetVoucherServiceItem(voucher_id) {
     return fetch(
-      `http://127.0.0.1:5000/voucherserviceitem/get/${voucher_id}/`,
+      `/voucherserviceitem/get/${voucher_id}/`,
       {
         method: "GET",
         headers: {
@@ -21,7 +21,7 @@ export default class VoucherServiceItemService {
   }
 
   static UpdateVoucherServiceItem(id, body) {
-    return fetch(`http://127.0.0.1:5000/voucherserviceitem/update/${id}/`, {
+    return fetch(`/voucherserviceitem/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default class VoucherServiceItemService {
   }
 
   static InsertVoucherServiceItem(body) {
-    return fetch("http://127.0.0.1:5000/voucherserviceitem/add/", {
+    return fetch("/voucherserviceitem/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default class VoucherServiceItemService {
   }
 
   static DeleteVoucherServiceItem(id, body) {
-    return fetch(`http://127.0.0.1:5000/voucherserviceitem/delete/${id}/`, {
+    return fetch(`/voucherserviceitem/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

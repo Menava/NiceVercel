@@ -1,6 +1,6 @@
 export default class FrameComponentService {
   static GetFrameComponents(frame_id) {
-    return fetch(`http://127.0.0.1:5000/framecomponent/get/all/${frame_id}`, {
+    return fetch(`/framecomponent/get/all/${frame_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class FrameComponentService {
   }
 
   static UpdateGetFrameComponent(id, body) {
-    return fetch(`http://127.0.0.1:5000/framecomponent/update/${id}/`, {
+    return fetch(`/framecomponent/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class FrameComponentService {
   }
 
   static InsertGetFrameComponent(body) {
-    return fetch("http://127.0.0.1:5000/framecomponent/add", {
+    return fetch("/framecomponent/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class FrameComponentService {
   }
 
   static DeleteGetFrameComponent(id) {
-    return fetch(`http://127.0.0.1:5000/framecomponent/delete/${id}/`, {
+    return fetch(`/framecomponent/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

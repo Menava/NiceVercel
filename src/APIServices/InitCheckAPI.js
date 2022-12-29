@@ -1,6 +1,6 @@
 export default class InitCheckService {
   static GetInitCheck(id) {
-    return fetch(`http://127.0.0.1:5000/initchecklist/get/${id}/`, {
+    return fetch(`/initchecklist/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class InitCheckService {
   }
 
   static UpdateInitCheck(id, body) {
-    return fetch(`http://127.0.0.1:5000/initchecklist/update/${id}/`, {
+    return fetch(`/initchecklist/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class InitCheckService {
   }
 
   static InsertInitCheck(body) {
-    return fetch("http://127.0.0.1:5000/initchecklist/add/", {
+    return fetch("/initchecklist/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default class InitCheckService {
   }
 
   static DeleteInitCheck(id, body) {
-    return fetch(`http://127.0.0.1:5000/initchecklist/delete/${id}/`, {
+    return fetch(`/initchecklist/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
