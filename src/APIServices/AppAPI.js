@@ -35,9 +35,7 @@ export default class AppService {
 
   static login(username, password) {
     console.log("log in in ")
-    return fetch(`/login/${username}/${password}`, {
-      credentials: "include",
-    }).then((resp) => resp.json());
+    return fetch(`/login/${username}/${password}`).then((resp) => resp.json());
   }
 
   static logout() {
