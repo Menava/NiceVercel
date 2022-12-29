@@ -1,6 +1,6 @@
 export default class ServiceService {
   static GetServices() {
-    return fetch("/service/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/service/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class ServiceService {
   }
 
   static GetService(id) {
-    return fetch(`/service/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/service/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export default class ServiceService {
   }
 
   static UpdateService(id, body) {
-    return fetch(`/service/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/service/update/${id}/`, {
       method: "PUT",
       body: body,
     }).then((resp) => {
@@ -31,7 +31,7 @@ export default class ServiceService {
   }
 
   // static InsertService(body) {
-  //   return fetch("/service/add/", {
+  //   return fetch("https://genshinimpact1234.pythonanywhere.com/service/add/", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default class ServiceService {
   // }
 
   static InsertService(formData) {
-    return fetch("/service/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/service/add/", {
       method: "POST",
       body: formData,
     }).then((resp) => {
@@ -54,7 +54,7 @@ export default class ServiceService {
   }
 
   // static InsertService(formData) {
-  //   return fetch("/service/add/", {
+  //   return fetch("https://genshinimpact1234.pythonanywhere.com/service/add/", {
   //     method: "POST",
   //     body: formData,
   //   }).then((resp) => {
@@ -64,7 +64,7 @@ export default class ServiceService {
   // }
 
   static DeleteService(id) {
-    return fetch(`/service/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/service/delete/${id}/`, {
       method: "PUT",
     });
   }

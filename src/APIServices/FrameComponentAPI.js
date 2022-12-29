@@ -1,6 +1,6 @@
 export default class FrameComponentService {
   static GetFrameComponents(frame_id) {
-    return fetch(`/framecomponent/get/all/${frame_id}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/framecomponent/get/all/${frame_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class FrameComponentService {
   }
 
   static UpdateGetFrameComponent(id, body) {
-    return fetch(`/framecomponent/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/framecomponent/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class FrameComponentService {
   }
 
   static InsertGetFrameComponent(body) {
-    return fetch("/framecomponent/add", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/framecomponent/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class FrameComponentService {
   }
 
   static DeleteGetFrameComponent(id) {
-    return fetch(`/framecomponent/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/framecomponent/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

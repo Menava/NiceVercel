@@ -1,6 +1,6 @@
 export default class CustomerService {
   static GetCustomer() {
-    return fetch("/customer/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/customer/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class CustomerService {
   }
 
   static UpdateCustomer(id, body) {
-    return fetch(`/customer/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/customer/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class CustomerService {
   }
 
   static InsertCustomer(body) {
-    return fetch("/customer/add", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/customer/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class CustomerService {
   }
 
   static DeleteCustomer(id) {
-    return fetch(`/customer/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/customer/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

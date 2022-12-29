@@ -1,6 +1,6 @@
 export default class FinalImageService {
   static GetFinalImage(id) {
-    return fetch(`/finalchecklist/image/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/image/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class FinalImageService {
   }
 
   static UpdateFinalImage(id, body) {
-    return fetch(`/finalchecklist/image/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/image/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class FinalImageService {
   }
 
   static InsertFinalImage(formData) {
-    return fetch("/finalchecklist/image/upload/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/finalchecklist/image/upload/", {
       method: "POST",
       body: formData,
     }).then((resp) => {
@@ -32,7 +32,7 @@ export default class FinalImageService {
   }
 
   static DeleteFinalImage(id, body) {
-    return fetch(`/finalchecklist/image/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/image/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

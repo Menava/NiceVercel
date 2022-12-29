@@ -1,6 +1,6 @@
 export default class EmployeeService {
   static GetEmployee() {
-    return fetch("/employee/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/employee/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class EmployeeService {
   }
 
   static UpdateEmployee(id, body) {
-    return fetch(`/employee/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/employee/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class EmployeeService {
   }
 
   static InsertEmployee(body) {
-    return fetch("/employee/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/employee/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class EmployeeService {
   }
 
   static DeleteEmployee(id, body) {
-    return fetch(`/employee/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/employee/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

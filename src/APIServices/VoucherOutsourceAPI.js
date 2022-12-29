@@ -1,7 +1,7 @@
 export default class VoucherOutsourceService {
 
     static GetVoucherOutsources(){
-      return fetch("/voucheroutsource/get", {
+      return fetch("https://genshinimpact1234.pythonanywhere.com/voucheroutsource/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export default class VoucherOutsourceService {
     }
 
     static GetVoucherOutsource(voucher_id){
-      return fetch(`//voucheroutsource/get/${voucher_id}/`, {
+      return fetch(`https://genshinimpact1234.pythonanywhere.com//voucheroutsource/get/${voucher_id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class VoucherOutsourceService {
     }
   
     static UpdateVoucherOutsource(id, body) {
-      return fetch(`/voucheroutsource/update/${id}/`, {
+      return fetch(`https://genshinimpact1234.pythonanywhere.com/voucheroutsource/update/${id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class VoucherOutsourceService {
     }
   
     static InsertVoucherOutsource(body) {
-      return fetch("/voucheroutsource/add/", {
+      return fetch("https://genshinimpact1234.pythonanywhere.com/voucheroutsource/add/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default class VoucherOutsourceService {
     }
   
     static DeleteVoucherOutsource(id, body) {
-      return fetch(`/voucheroutsource/delete/${id}/`, {
+      return fetch(`https://genshinimpact1234.pythonanywhere.com/voucheroutsource/delete/${id}/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

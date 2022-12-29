@@ -1,6 +1,6 @@
 export default class EmployeePayrollService {
   static GetEmployeePayrolls() {
-    return fetch("/employee-payroll/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/employee-payroll/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class EmployeePayrollService {
     }).then((resp) => resp.json());
   }
   static GetEmployeePayroll(id) {
-    return fetch(`//employee-payroll/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com//employee-payroll/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default class EmployeePayrollService {
   }
 
   static UpdateEmployeePayroll(id, body) {
-    return fetch(`/employee-payroll/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/employee-payroll/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default class EmployeePayrollService {
   }
 
   static InsertEmployeePayroll(body) {
-    return fetch("/employee-payroll/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/employee-payroll/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default class EmployeePayrollService {
   }
 
   static DeleteEmployeePayroll(id) {
-    return fetch(`/employee-payroll/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/employee-payroll/delete/${id}/`, {
       method: "DELETE",
     }).then((resp) => resp.json());
   }

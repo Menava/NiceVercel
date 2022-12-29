@@ -1,6 +1,6 @@
 export default class CustomerCarService {
   static GetCustomerCar() {
-    return fetch("/customer/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/customer/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class CustomerCarService {
   }
 
   static UpdateCustomerCar(id, body) {
-    return fetch(`/customer/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/customer/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class CustomerCarService {
   }
 
   static InsertCustomerCar(body) {
-    return fetch("/customercar/add", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/customercar/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,13 +29,13 @@ export default class CustomerCarService {
   }
 
   // static InsertCustomerCar() {
-  //   return fetch("/customercar/add", {
+  //   return fetch("https://genshinimpact1234.pythonanywhere.com/customercar/add", {
   //     method: "POST",
   //   }).then((resp) => resp.json());
   // }
 
   static DeleteCustomerCar(id, body) {
-    return fetch(`/customer/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/customer/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

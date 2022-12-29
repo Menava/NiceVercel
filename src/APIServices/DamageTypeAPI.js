@@ -1,6 +1,6 @@
 export default class DamageTypeService {
   static GetDamageTypes() {
-    return fetch("/damagetype/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/damagetype/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class DamageTypeService {
   }
 
   static UpdateDamageType(id, body) {
-    return fetch(`/damagetype/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/damagetype/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class DamageTypeService {
   }
 
   static InsertDamageType(body) {
-    return fetch("/damagetype/add", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/damagetype/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class DamageTypeService {
   }
 
   static DeleteDamageType(id) {
-    return fetch(`/damagetype/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/damagetype/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

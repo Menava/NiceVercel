@@ -1,6 +1,6 @@
 export default class InitCheckService {
   static GetInitCheck(id) {
-    return fetch(`/initchecklist/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initchecklist/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class InitCheckService {
   }
 
   static UpdateInitCheck(id, body) {
-    return fetch(`/initchecklist/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initchecklist/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class InitCheckService {
   }
 
   static InsertInitCheck(body) {
-    return fetch("/initchecklist/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/initchecklist/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default class InitCheckService {
   }
 
   static DeleteInitCheck(id, body) {
-    return fetch(`/initchecklist/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initchecklist/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

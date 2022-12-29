@@ -1,6 +1,6 @@
 export default class ServicePlaceService {
   static GetServicePlaces() {
-    return fetch("/serviceplace/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplace/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class ServicePlaceService {
     }).then((resp) => resp.json());
   }
   static GetServicePlace(id) {
-    return fetch(`//serviceplace/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com//serviceplace/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default class ServicePlaceService {
   }
 
   static UpdateServicePlace(id, body) {
-    return fetch(`/serviceplace/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceplace/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default class ServicePlaceService {
 
   static UpdateServicePlaceV2(id, newID) {
     return fetch(
-      `/serviceplace/update/v2/${id}/${newID}`,
+      `https://genshinimpact1234.pythonanywhere.com/serviceplace/update/v2/${id}/${newID}`,
       {
         method: "PUT",
       }
@@ -36,7 +36,7 @@ export default class ServicePlaceService {
   }
 
   static InsertServicePlace(body) {
-    return fetch("/serviceplace/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplace/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,13 +46,13 @@ export default class ServicePlaceService {
   }
 
   static DeleteServicePlace(id) {
-    return fetch(`/serviceplace/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceplace/delete/${id}/`, {
       method: "PUT",
     }).then((resp) => resp.json());
   }
 
   static RealDeleteServicePlace(id) {
-    return fetch(`/serviceplace/real-delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceplace/real-delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

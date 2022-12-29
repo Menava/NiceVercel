@@ -12,13 +12,13 @@ export default class AppService {
   // }
 
   static DeleteSession() {
-    fetch("/delete-session/", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/delete-session/", {
       credentials: "include",
     });
   }
 
   static SetUserItems(formData) {
-    return fetch("/set-userItems/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/set-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -26,7 +26,7 @@ export default class AppService {
   }
 
   static AppendUserItems(formData) {
-    return fetch("/append-userItems/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/append-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -34,20 +34,20 @@ export default class AppService {
   }
 
   static login(username, password) {
-    return fetch(`/login/${username}/${password}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/login/${username}/${password}`, {
       credentials: "include",
     }).then((resp) => resp.json());
   }
 
   static logout() {
-    fetch("/logout", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/logout", {
       credentials: "include",
     });
   }
 
   //Items Section
   static InitItemArray() {
-    return fetch("/init_itemArray/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/init_itemArray/get", {
       method: "GET",
       credentials: "include",
     }).then((resp) => resp.json());
@@ -61,7 +61,7 @@ export default class AppService {
   // }
 
   static EditItemArray(option, formData) {
-    return fetch(`/init_itemArray/edit/${option}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/init_itemArray/edit/${option}`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -70,13 +70,13 @@ export default class AppService {
 
   //Database
   static ResetDatabase(option) {
-    return fetch(`/reset/${option}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/reset/${option}`, {
       method: "GET",
     }).then((resp) => resp.json());
   }
 
   static ClearFolder(){
-    fetch("/drive/clearfolder", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/drive/clearfolder", {
     });
   }
 }
