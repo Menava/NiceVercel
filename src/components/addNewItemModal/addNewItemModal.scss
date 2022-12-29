@@ -148,6 +148,8 @@
       cursor: pointer;
     }
     .input_wrapper {
+      display: flex;
+      flex-direction: column;
       .item_input {
         display: flex;
         flex-direction: column;
@@ -196,16 +198,20 @@
       }
     }
     .radioButtons_wrapper {
-      margin: 10px 0;
       display: flex;
-      gap: 20px;
+      align-items: center;
+      margin: 20px 0px;
       .radioButton_wrapper {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 10px;
-
+        input {
+          width: 20px;
+          height: 20px;
+        }
         p {
-          font-size: 20px;
-          font-weight: 500;
+          font-weight: bold;
         }
       }
     }
