@@ -56,7 +56,7 @@ function Sidebar() {
           className="sidebar_logo"
           onClick={() => setActiveLink("Prepare Service")}
         >
-          <img src="https://drive.google.com/uc?export=view&id=1TvJdS8BVAZN-A0aXu3Gei2nuORY36wSt" alt="drive image"/>
+          <img src="https://drive.google.com/uc?export=view&id=1yXnO4PKN80LeThvLlG4DDrR0lRw6al1A" alt="drive image"/>
           <div className="sidebar_logo_letter">
             <h1>Nice</h1>
             <p>Car workshop</p>
