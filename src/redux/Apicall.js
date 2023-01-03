@@ -159,8 +159,6 @@ export async function getServiceDetail(dispatch, id) {
 
 export async function getVouchers(dispatch) {
   const data = await VoucherService.GetVouchers();
-  console.log("Api Data", data);
-  console.log("Triggered");
   dispatch(fetchVouchers({ data }));
 }
 

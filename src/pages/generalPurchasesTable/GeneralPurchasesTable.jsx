@@ -9,11 +9,21 @@ import {
   openGeneralPurhcaseModal,
 } from "../../redux/modalsAndDataSlice";
 
-function GeneralPurchasesTable() {
+function GeneralPurchasesTable({
+  generalPurchase,
+  setGeneralPurchase,
+  purchaseOptions,
+  setPurchaseOptions,
+  selectedPurchaseOptions,
+  setSelectedPurchaseOptions,
+  toEditGeneralPurchaseId,
+  setToEditGeneralPurchaseId,
+}) {
   const headersList = [
     "No",
     "Id",
     "General Purchase",
+    "Type",
     "Quantity",
     "Price",
     "Amount",
@@ -30,22 +40,34 @@ function GeneralPurchasesTable() {
 
   function openAddGeneralPurchaseHandle() {
     dispatch(openGeneralPurhcaseModal());
+    setGeneralPurchase({ Description: "", Price: "", Quantity: "" });
+    setPurchaseOptions({
+      Cooking: "",
+      General: "",
+      Food: "",
+      Tax: "",
+      Donation: "",
+      "Health Care": "",
+    });
+    setSelectedPurchaseOptions("");
+    setToEditGeneralPurchaseId("");
   }
 
   function openEditGeneralPurchaseHandle(
     description,
     quantity,
     unitPrice,
+    purchaseType,
     toEditId
   ) {
-    dispatch(
-      openEditGeneralPurchaseModal({
-        description,
-        quantity,
-        unitPrice,
-        toEditId,
-      })
-    );
+    dispatch(openEditGeneralPurchaseModal());
+    setGeneralPurchase({
+      Description: description,
+      Price: unitPrice,
+      Quantity: quantity,
+    });
+    setSelectedPurchaseOptions(purchaseType);
+    setToEditGeneralPurchaseId(toEditId);
   }
 
   function deleteGeneralPurchaseHandle(toDeleteId) {
@@ -62,6 +84,7 @@ function GeneralPurchasesTable() {
         <td>{index + 1}</td>
         <td>{gp.id}</td>
         <td>{gp.description}</td>
+        <td>{gp.purchase_type}</td>
         <td>{gp.quantity}</td>
         <td>{gp.unit_price}</td>
         <td>{gp.total}</td>
@@ -74,6 +97,7 @@ function GeneralPurchasesTable() {
                 gp.description,
                 gp.quantity,
                 gp.unit_price,
+                gp.purchase_type,
                 gp.id
               )
             }
