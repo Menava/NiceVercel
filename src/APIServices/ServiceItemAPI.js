@@ -1,6 +1,6 @@
 export default class ServiceItemService {
   static GetServiceItems() {
-    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceitem/get", {
+    return fetch("http://127.0.0.1:5000/serviceitem/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,21 +9,21 @@ export default class ServiceItemService {
   }
 
   static UpdateServiceItem(formData) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceitem/update/`, {
+    return fetch(`http://127.0.0.1:5000/serviceitem/update/`, {
       method: "PUT",
       body: formData,
     }).then((resp) => resp.json());
   }
 
   static InsertServiceItem(formData) {
-    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceitem/add/", {
+    return fetch("http://127.0.0.1:5000/serviceitem/add/", {
       method: "POST",
       body: formData,
     }).then((resp) => resp.json());
   }
 
   static DeleteServiceItem(id, body) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceitem/delete/${id}/`, {
+    return fetch(`http://127.0.0.1:5000/serviceitem/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

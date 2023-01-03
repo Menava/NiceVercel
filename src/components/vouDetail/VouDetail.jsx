@@ -53,7 +53,6 @@ function VouDetail() {
       // console.log("FinalCheck", finalCheck);
       // console.log("FinalImage", finalImage);
     }
-    console.log("Initital Images", initialImages);
     async function fetchVoucherEmployee() {
       const data = await VoucherEmployeeService.GetVoucherEmployee(voucherId);
       setEmployees(data);

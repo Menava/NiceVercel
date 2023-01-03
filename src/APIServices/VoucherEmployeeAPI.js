@@ -1,7 +1,7 @@
 export default class VoucherEmployeeService {
 
     static GetVoucherEmployees(){
-      return fetch("https://genshinimpact1234.pythonanywhere.com/voucheremployee/get", {
+      return fetch("http://127.0.0.1:5000/voucheremployee/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export default class VoucherEmployeeService {
     }
 
     static GetVoucherEmployee(voucher_id){
-      return fetch(`https://genshinimpact1234.pythonanywhere.com//voucheremployee/get/${voucher_id}/`, {
+      return fetch(`http://127.0.0.1:5000//voucheremployee/get/${voucher_id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class VoucherEmployeeService {
     }
   
     static UpdateVoucherEmployee(id, body) {
-      return fetch(`https://genshinimpact1234.pythonanywhere.com/voucheremployee/update/${id}/`, {
+      return fetch(`http://127.0.0.1:5000/voucheremployee/update/${id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default class VoucherEmployeeService {
     }
   
     static InsertVoucherEmployee(body) {
-      return fetch("https://genshinimpact1234.pythonanywhere.com/voucheremployee/add/", {
+      return fetch("http://127.0.0.1:5000/voucheremployee/add/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default class VoucherEmployeeService {
     }
   
     static DeleteVoucherEmployee(id, body) {
-      return fetch(`https://genshinimpact1234.pythonanywhere.com/voucheremployee/delete/${id}/`, {
+      return fetch(`http://127.0.0.1:5000/voucheremployee/delete/${id}/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

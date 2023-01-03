@@ -1,6 +1,6 @@
 export default class VoucherPaymentService {
   static GetVoucherPayments() {
-    return fetch("https://genshinimpact1234.pythonanywhere.com/voucher/get", {
+    return fetch("http://127.0.0.1:5000/voucher/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class VoucherPaymentService {
     }).then((resp) => resp.json());
   }
   static GetVoucherPayment(id) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com//voucher_payment/get/${id}/`, {
+    return fetch(`http://127.0.0.1:5000//voucher_payment/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default class VoucherPaymentService {
   }
 
   static UpdateVoucherPayment(id, body) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/voucher_payment/update/${id}/`, {
+    return fetch(`http://127.0.0.1:5000/voucher_payment/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default class VoucherPaymentService {
 
   static InsertVoucherPayment(day, month, year, body) {
     return fetch(
-      `https://genshinimpact1234.pythonanywhere.com/voucher_payment/add/${day}/${month}/${year}/`,
+      `http://127.0.0.1:5000/voucher_payment/add/${day}/${month}/${year}/`,
       {
         method: "POST",
         headers: {
@@ -40,7 +40,7 @@ export default class VoucherPaymentService {
   }
 
   static DeleteVoucherPayment(id, body) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/voucher/delete/${id}/`, {
+    return fetch(`http://127.0.0.1:5000/voucher/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export default class VoucherPaymentService {
 
   static GetSales(day, month, year) {
     return fetch(
-      `https://genshinimpact1234.pythonanywhere.com/voucher/sales/${day}/${month}/${year}/`,
+      `http://127.0.0.1:5000/voucher/sales/${day}/${month}/${year}/`,
       {
         method: "GET",
         headers: {

@@ -1,6 +1,6 @@
 export default class ItemService {
   static GetItems() {
-    return fetch("https://genshinimpact1234.pythonanywhere.com/item/get", {
+    return fetch("http://127.0.0.1:5000/item/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export default class ItemService {
     for (var pair of body.entries()) {
       console.log("body", pair[0] + ", " + pair[1]);
     }
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/item/update/${id}/`, {
+    return fetch(`http://127.0.0.1:5000/item/update/${id}/`, {
       method: "PUT",
       body: body,
     }).then((resp) => {
@@ -25,7 +25,7 @@ export default class ItemService {
   }
 
   static InsertItem(formData) {
-    return fetch("https://genshinimpact1234.pythonanywhere.com/item/add/", {
+    return fetch("http://127.0.0.1:5000/item/add/", {
       method: "POST",
       body: formData,
     }).then((resp) => {
@@ -38,7 +38,7 @@ export default class ItemService {
   }
 
   static DeleteItem(id) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/item/delete/${id}/`, {
+    return fetch(`http://127.0.0.1:5000/item/delete/${id}/`, {
       method: "PUT",
     });
   }

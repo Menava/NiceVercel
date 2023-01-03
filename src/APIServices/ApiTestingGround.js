@@ -27,11 +27,11 @@ function ApiTestingGround() {
   const [token, setToken] = useState("");
   const [sesValue, setSesValue] = useState("");
   const [sessionData, setSessionData] = useState({});
-  // const option = "withdata";
-  // AppService.ResetDatabase(option);
+  const option = "withdata";
+  AppService.ResetDatabase(option);
   // console.log("SESSION DATA", sessionData["user-items"]);
   function setSessionHandle() {
-    VoucherService.Get_ItemProfit().then((resp) => console.log(resp));
+    AppService.SetSession(sesValue);
   }
   function getSessionHandle() {
     AppService.GetSession().then((resp) => {

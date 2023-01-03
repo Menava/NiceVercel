@@ -1,9 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
-
 import Items from "./pages/itemsTable/ItemsTable";
 import "./pages.scss";
-
 import ApiTestingGround from "./APIServices/ApiTestingGround";
 import Tables from "./pages/tables/Tables";
 import PrepareService from "./pages/prepareService/PrepareService";
@@ -30,7 +28,16 @@ import WaitingListsTable from "./pages/waitingListsTable/WaitingListsTable";
 import VouDetail from "./components/vouDetail/VouDetail";
 import ItemPurchasesTable from "./pages/itemPurchasesTable/ItemPurchasesTable";
 
-function Pages() {
+function Pages({
+  generalPurchase,
+  setGeneralPurchase,
+  purchaseOptions,
+  setPurchaseOptions,
+  selectedPurchaseOptions,
+  setSelectedPurchaseOptions,
+  toEditGeneralPurchaseId,
+  setToEditGeneralPurchaseId,
+}) {
   return (
     <div className="pages">
       <Routes>
@@ -64,7 +71,18 @@ function Pages() {
           />
           <Route
             path="-$tables/generalPurchasesTable"
-            element={<GeneralPurchasesTable />}
+            element={
+              <GeneralPurchasesTable
+                generalPurchase={generalPurchase}
+                setGeneralPurchase={setGeneralPurchase}
+                purchaseOptions={purchaseOptions}
+                setPurchaseOptions={setPurchaseOptions}
+                selectedPurchaseOptions={selectedPurchaseOptions}
+                setSelectedPurchaseOptions={setSelectedPurchaseOptions}
+                toEditGeneralPurchaseId={toEditGeneralPurchaseId}
+                setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
+              />
+            }
           />
           <Route
             path="-$tables/itemPurchases"
