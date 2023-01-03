@@ -57,7 +57,7 @@ function Sidebar() {
           onClick={() => setActiveLink("Prepare Service")}
         >
           <img
-            src="https://kpopping.com/documents/24/1/1440/210615-TWICE-Instagram-Update-Nayeon-documents-1.jpeg?v=c7f9c"
+            src="https://app.logo.com/view/logo_8f430d64-c55a-4dcf-ae0a-aa40f8c498c8"
             alt="nayeon"
           />
           <div className="sidebar_logo_letter">
