@@ -1,24 +1,24 @@
 export default class AppService {
   static SetSession(value) {
-    fetch(`http://127.0.0.1:5000/set-session/${value}`, {
+    fetch(`/set-session/${value}`, {
       credentials: "include",
     });
   }
 
   // static GetSession() {
-  //   return fetch("http://127.0.0.1:5000/get-session/", {
+  //   return fetch("/get-session/", {
   //     credentials: "include",
   //   }).then((resp) => resp.json());
   // }
 
   static DeleteSession() {
-    fetch("http://127.0.0.1:5000/delete-session/", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/delete-session/", {
       credentials: "include",
     });
   }
 
   static SetUserItems(formData) {
-    return fetch("http://127.0.0.1:5000/set-userItems/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/set-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -26,7 +26,7 @@ export default class AppService {
   }
 
   static AppendUserItems(formData) {
-    return fetch("http://127.0.0.1:5000/append-userItems/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/append-userItems/", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -34,34 +34,34 @@ export default class AppService {
   }
 
   static login(username, password) {
-    return fetch(`http://127.0.0.1:5000/login/${username}/${password}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/login/${username}/${password}`, {
       credentials: "include",
     }).then((resp) => resp.json());
   }
 
   static logout() {
-    fetch("http://127.0.0.1:5000/logout", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/logout", {
       credentials: "include",
     });
   }
 
   //Items Section
   static InitItemArray() {
-    return fetch("http://127.0.0.1:5000/init_itemArray/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/init_itemArray/get", {
       method: "GET",
       credentials: "include",
     }).then((resp) => resp.json());
   }
 
   // static EditItemArray(option) {
-  //   return fetch(`http://127.0.0.1:5000/init_itemArray/edit/${option}`, {
+  //   return fetch(`/init_itemArray/edit/${option}`, {
   //     method: "GET",
   //     credentials: "include",
   //   }).then((resp) => resp.json());
   // }
 
   static EditItemArray(option, formData) {
-    return fetch(`http://127.0.0.1:5000/init_itemArray/edit/${option}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/init_itemArray/edit/${option}`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -70,13 +70,13 @@ export default class AppService {
 
   //Database
   static ResetDatabase(option) {
-    return fetch(`http://127.0.0.1:5000/reset/${option}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/reset/${option}`, {
       method: "GET",
     }).then((resp) => resp.json());
   }
 
   static ClearFolder(){
-    fetch("http://127.0.0.1:5000/drive/clearfolder", {
+    fetch("https://genshinimpact1234.pythonanywhere.com/drive/clearfolder", {
     });
   }
 }

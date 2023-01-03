@@ -1,6 +1,6 @@
 export default class NotificationService {
   static GetNotifications() {
-    return fetch("http://127.0.0.1:5000/notification/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/notification/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ export default class NotificationService {
     }).then((resp) => resp.json());
   }
   static UpdatetNotifications(id) {
-    return fetch(`http://127.0.0.1:5000/notification/update/${id}`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/notification/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

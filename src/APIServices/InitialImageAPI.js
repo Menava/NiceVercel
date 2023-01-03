@@ -1,6 +1,6 @@
 export default class InitialImageService {
   static GetInitialImages(id) {
-    return fetch(`http://127.0.0.1:5000/initialchecklist/image/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initialchecklist/image/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class InitialImageService {
   }
 
   static UpdateInitialImage(id, body) {
-    return fetch(`http://127.0.0.1:5000/initialchecklist/image/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initialchecklist/image/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class InitialImageService {
   }
 
   static InsertInitialImage(formData) {
-    return fetch("http://127.0.0.1:5000/initialchecklist/image/upload/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/initialchecklist/image/upload/", {
       method: "POST",
       body: formData,
     }).then((resp) => {
@@ -32,7 +32,7 @@ export default class InitialImageService {
   }
 
   static DeleteInitialImage(id, body) {
-    return fetch(`http://127.0.0.1:5000/initialchecklist/image/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/initialchecklist/image/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -163,8 +163,13 @@ const modalsAndDataSlice = createSlice({
     toDeleteGeneralPurchaseId: "",
   },
   reducers: {
-    openEditGeneralPurchaseModal: (state) => {
+    openEditGeneralPurchaseModal: (state, action) => {
+      const { description, quantity, unitPrice, toEditId } = action.payload;
       state.openEditGeneralPurchaseModal = true;
+      state.toEditGeneralPurchaseId = toEditId;
+      state.generalPurchase.Description = description;
+      state.generalPurchase.Quantity = quantity;
+      state.generalPurchase.UnitPrice = unitPrice;
     },
     openDeleteGeneralPurchaseModal: (state, action) => {
       const { toDeleteId } = action.payload;

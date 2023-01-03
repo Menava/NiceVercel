@@ -1,6 +1,6 @@
 export default class FrameService {
   static GetCarframes() {
-    return fetch("http://127.0.0.1:5000/carframe/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/carframe/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,21 +9,21 @@ export default class FrameService {
   }
 
   static UpdateCarframe(id, body) {
-    return fetch(`http://127.0.0.1:5000/carframe/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/carframe/update/${id}/`, {
       method: "PUT",
       body: body,
     }).then((resp) => resp.json());
   }
 
   static InsertCarframe(body) {
-    return fetch("http://127.0.0.1:5000/carframe/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/carframe/add/", {
       method: "POST",
       body: body,
     }).then((resp) => resp.json());
   }
 
   static DeleteCarframe(id, body) {
-    return fetch(`http://127.0.0.1:5000/carframe/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/carframe/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

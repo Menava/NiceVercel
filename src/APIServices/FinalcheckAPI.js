@@ -1,6 +1,6 @@
 export default class FinalCheckService {
   static GetFinalCheck(id) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/get/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/get/${id}/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export default class FinalCheckService {
   }
 
   static UpdateFinalCheck(id, body) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/update/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/update/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default class FinalCheckService {
   }
 
   static InsertFinalCheck(body) {
-    return fetch("http://127.0.0.1:5000/finalchecklist/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/finalchecklist/add/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default class FinalCheckService {
   }
 
   static DeleteFinalCheck(id, body) {
-    return fetch(`http://127.0.0.1:5000/finalchecklist/delete/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/finalchecklist/delete/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

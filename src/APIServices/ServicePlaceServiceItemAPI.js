@@ -1,6 +1,6 @@
 export default class ServicePlaceServiceItemService {
   static GetServicePlaceServiceItems() {
-    return fetch("http://127.0.0.1:5000/serviceplaceserviceitem/get", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/get", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export default class ServicePlaceServiceItemService {
 
   static GetServicePlaceServiceItem(servicePlace_id) {
     return fetch(
-      `http://127.0.0.1:5000/serviceplaceserviceitem/get/${servicePlace_id}/`,
+      `https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/get/${servicePlace_id}/`,
       {
         method: "GET",
         headers: {
@@ -22,7 +22,7 @@ export default class ServicePlaceServiceItemService {
 
   static UpdateServicePlaceServiceItemV2(id, newID) {
     return fetch(
-      `http://127.0.0.1:5000/serviceplaceserviceitem/update/byserviceplaceID/${id}/${newID}`,
+      `https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/update/byserviceplaceID/${id}/${newID}`,
       {
         method: "PUT",
       }
@@ -30,7 +30,7 @@ export default class ServicePlaceServiceItemService {
   }
 
   static UpdateServicePlaceServiceItem(body) {
-    return fetch("http://127.0.0.1:5000/serviceplaceserviceitem/update/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/update/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default class ServicePlaceServiceItemService {
   }
 
   static InsertServicePlaceServiceItem(formData) {
-    return fetch("http://127.0.0.1:5000/serviceplaceserviceitem/add/", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/add/", {
       method: "POST",
       body: formData,
     }).then((resp) => resp.json());
@@ -50,7 +50,7 @@ export default class ServicePlaceServiceItemService {
     console.log("test", id);
     console.log("test", body);
     return fetch(
-      `http://127.0.0.1:5000/serviceplaceserviceitem/delete/${id}/`,
+      `https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/delete/${id}/`,
       {
         method: "DELETE",
         headers: {
@@ -61,7 +61,7 @@ export default class ServicePlaceServiceItemService {
     ).then((resp) => resp.json());
   }
   static EditItemQuantity(id, body) {
-    return fetch(`http://127.0.0.1:5000/serviceplaceserviceitem/edit/${id}/`, {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/edit/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default class ServicePlaceServiceItemService {
   }
   static AppendItem(body) {
     console.log("test", body);
-    return fetch("http://127.0.0.1:5000/serviceplaceserviceitem/append", {
+    return fetch("https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/append", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export default class ServicePlaceServiceItemService {
 
   static GetTestMethod(servicePlace_id) {
     return fetch(
-      `http://127.0.0.1:5000/serviceplaceserviceitem/test/${servicePlace_id}/`,
+      `https://genshinimpact1234.pythonanywhere.com/serviceplaceserviceitem/test/${servicePlace_id}/`,
       {
         method: "GET",
         headers: {

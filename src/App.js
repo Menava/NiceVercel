@@ -67,7 +67,6 @@ import DeleteItemModal from "./components/deleteItemModal/DeleteItemModal";
 import NotificationService from "./APIServices/NotificationAPI";
 import { finishLoading, startLoading } from "./redux/loadingSlice";
 import EmployeePayrollService from "./APIServices/EmployeePayrollAPI";
-import GeneralPurchaseModal from "./components/generalPurchaseModal/GeneralPurchaseModal";
 
 function App() {
   const { username, position } = useSelector((state) => state.user);
@@ -78,33 +77,22 @@ function App() {
   const { customerInitialValues, employeeInitialValues } = modalsAndData;
   const { employeeLeader } = useSelector((state) => state.prepareserviceInputs);
   const { socket } = useSelector((state) => state.socket);
+
   const customerSignaturePad = useRef({});
   const employeeSignaturePad = useRef({});
   const customerFinalSignaturePad = useRef({});
   const employeeFinalSignaturePad = useRef({});
   const notiWrapperRef = useRef();
+
   const dispatch = useDispatch();
   const addEmployeePrepareServiceRef = useRef();
   const inputedService = useSelector((state) => state.inputedService);
   const [openNoti, setOpenNoti] = useState(false);
+
   function closeModalHandle(e) {
     e.target === addEmployeePrepareServiceRef.current && dispatch(closeModal());
   }
-  const [generalPurchase, setGeneralPurchase] = useState({
-    Description: "",
-    Price: "",
-    Quantity: "",
-  });
-  const [purchaseOptions, setPurchaseOptions] = useState({
-    Cooking: "",
-    General: "",
-    Food: "",
-    Tax: "",
-    Donation: "",
-    "Health Care": "",
-  });
-  const [selectedPurchaseOptions, setSelectedPurchaseOptions] = useState("");
-  const [toEditGeneralPurchaseId, setToEditGeneralPurchaseId] = useState("");
+
   // useEffect(() => {
   //   function onBeforeunload(e) {
   //     e.preventDefault();
@@ -520,20 +508,20 @@ function App() {
     dispatch(closeModal());
   }
 
-  // async function editGeneralPurchase() {
-  //   const toChangeId = modalsAndData.toEditGeneralPurchaseId;
-  //   const Description = modalsAndData.generalPurchase.Description;
-  //   const Quantity = modalsAndData.generalPurchase.Quantity;
-  //   const UnitPrice = modalsAndData.generalPurchase.UnitPrice;
-  //   await GeneralPurchaseService.UpdateGeneralPurchase(toChangeId, {
-  //     description: modalsAndData.generalPurchase.Description,
-  //     unit_price: modalsAndData.generalPurchase.UnitPrice,
-  //     quantity: modalsAndData.generalPurchase.Quantity,
-  //     purchase_type: "Cost",
-  //   });
-  //   getGeneralPurchases(dispatch);
-  //   dispatch(closeModal());
-  // }
+  async function editGeneralPurchase() {
+    const toChangeId = modalsAndData.toEditGeneralPurchaseId;
+    const Description = modalsAndData.generalPurchase.Description;
+    const Quantity = modalsAndData.generalPurchase.Quantity;
+    const UnitPrice = modalsAndData.generalPurchase.UnitPrice;
+    await GeneralPurchaseService.UpdateGeneralPurchase(toChangeId, {
+      description: modalsAndData.generalPurchase.Description,
+      unit_price: modalsAndData.generalPurchase.UnitPrice,
+      quantity: modalsAndData.generalPurchase.Quantity,
+      purchase_type: "Cost",
+    });
+    getGeneralPurchases(dispatch);
+    dispatch(closeModal());
+  }
   //
   return (
     <BrowserRouter>
@@ -597,24 +585,13 @@ function App() {
               )}
               {/* Geneeral purchase Modal */}
               {modalsAndData.openGeneralPurhcaseModal && (
-                <GeneralPurchaseModal
-                  generalPurchase={generalPurchase}
-                  setGeneralPurchase={setGeneralPurchase}
-                  purchaseOptions={purchaseOptions}
-                  setPurchaseOptions={setPurchaseOptions}
-                  selectedPurchaseOptions={selectedPurchaseOptions}
-                  setSelectedPurchaseOptions={setSelectedPurchaseOptions}
-                  toEditGeneralPurchaseId={toEditGeneralPurchaseId}
-                  setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
-                  buttonName="Add General Purchase"
+                <PopupModal
+                  editModelHeader="General Purchase"
+                  initialValues={modalsAndData.generalPurchaseInitialValues}
+                  toChangeInputObj="generalPurchaseInitialValues"
+                  handleFunction={addGeneralPurchaseHandle}
+                  buttonName="General Purchase"
                 />
-                // <PopupModal
-                //   editModelHeader="General Purchase"
-                //   initialValues={modalsAndData.generalPurchaseInitialValues}
-                //   toChangeInputObj="generalPurchaseInitialValues"
-                //   handleFunction={addGeneralPurchaseHandle}
-                //   buttonName="General Purchase"
-                // />
               )}
               {/* Give Employee salaries Modal */}
               {modalsAndData.openGiveSalaryModal && <GiveEmployeeSalaryModal />}
@@ -687,17 +664,12 @@ function App() {
                 />
               )}
               {modalsAndData.openEditGeneralPurchaseModal && (
-                <GeneralPurchaseModal
-                  generalPurchase={generalPurchase}
-                  setGeneralPurchase={setGeneralPurchase}
-                  purchaseOptions={purchaseOptions}
-                  setPurchaseOptions={setPurchaseOptions}
-                  selectedPurchaseOptions={selectedPurchaseOptions}
-                  setSelectedPurchaseOptions={setSelectedPurchaseOptions}
-                  toEditGeneralPurchaseId={toEditGeneralPurchaseId}
-                  setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
-                  buttonName="Edit General Purchase"
-                  edit
+                <PopupModal
+                  editModelHeader="Edit General Purchase"
+                  initialValues={modalsAndData.generalPurchase}
+                  toChangeInputObj="generalPurchase"
+                  handleFunction={editGeneralPurchase}
+                  buttonName="Edit"
                 />
               )}
               {/* Add New Service Modal */}
@@ -869,16 +841,7 @@ function App() {
                   />
                 </div>
               </div>
-              <Pages
-                generalPurchase={generalPurchase}
-                setGeneralPurchase={setGeneralPurchase}
-                purchaseOptions={purchaseOptions}
-                setPurchaseOptions={setPurchaseOptions}
-                selectedPurchaseOptions={selectedPurchaseOptions}
-                setSelectedPurchaseOptions={setSelectedPurchaseOptions}
-                toEditGeneralPurchaseId={toEditGeneralPurchaseId}
-                setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
-              />
+              <Pages />
             </div>
           </div>
         </div>
