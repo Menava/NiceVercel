@@ -31,7 +31,7 @@ function ApiTestingGround() {
   // AppService.ResetDatabase(option);
   // console.log("SESSION DATA", sessionData["user-items"]);
   function setSessionHandle() {
-    AppService.SetSession(sesValue);
+    VoucherService.Get_ItemProfit();
   }
   function getSessionHandle() {
     AppService.GetSession().then((resp) => {

@@ -8,22 +8,28 @@ export default class VoucherService {
     }).then((resp) => resp.json());
   }
   static GetVoucher(id) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com//voucher/get/${id}/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((resp) => resp.json());
+    return fetch(
+      `https://genshinimpact1234.pythonanywhere.com//voucher/get/${id}/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
   }
 
   static UpdateVoucher(id, body) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/voucher/update/${id}/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    }).then((resp) => resp.json());
+    return fetch(
+      `https://genshinimpact1234.pythonanywhere.com/voucher/update/${id}/`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    ).then((resp) => resp.json());
   }
 
   static InsertVoucher(body) {
@@ -37,12 +43,15 @@ export default class VoucherService {
   }
 
   static DeleteVoucher(id, body) {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/voucher/delete/${id}/`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    return fetch(
+      `https://genshinimpact1234.pythonanywhere.com/voucher/delete/${id}/`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 
   static GetSales(day, month, year) {
@@ -67,5 +76,14 @@ export default class VoucherService {
         },
       }
     ).then((resp) => resp.json());
+  }
+
+  static Get_ItemProfit() {
+    return fetch(`https://genshinimpact1234.pythonanywhere.com/itemprofit`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 }
