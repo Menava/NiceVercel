@@ -84,6 +84,6 @@ export default class VoucherService {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    }).then((resp) => resp.json());
   }
 }
