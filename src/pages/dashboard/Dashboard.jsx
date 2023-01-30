@@ -17,6 +17,7 @@ function Dashboard() {
   const [options, setOptions] = useState("today");
 
   useEffect(() => {
+    VoucherService.GetSales(options).then((resp) => console.log("resp", resp));
     VoucherService.Get_ItemProfit(options).then((resp) => {
       console.log("resp", resp);
       setAllServices({

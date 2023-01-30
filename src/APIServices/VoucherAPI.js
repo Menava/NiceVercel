@@ -54,16 +54,16 @@ export default class VoucherService {
     );
   }
 
-  static GetSales(day, month, year) {
+  static GetSales(option) {
     return fetch(
-      `https://genshinimpact1234.pythonanywhere.com/voucher/sales/${day}/${month}/${year}/`,
+      `https://genshinimpact1234.pythonanywhere.com/voucher/sales/${option}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then((resp) => resp.json());
   }
 
   static GetCustomeVouchers(customerID) {
