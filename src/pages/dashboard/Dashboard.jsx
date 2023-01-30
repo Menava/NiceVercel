@@ -60,7 +60,7 @@ function Dashboard() {
         },
       });
     });
-  }, []);
+  }, [options]);
 
   const switchHandle = () => {
     setItemIncome((prev) => !prev);
