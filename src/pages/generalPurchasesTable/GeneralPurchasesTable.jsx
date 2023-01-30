@@ -34,6 +34,7 @@ function GeneralPurchasesTable({
   const dispatch = useDispatch();
   const { generalPurchases } = useSelector((state) => state.modalsAndData);
   console.log(generalPurchases);
+
   function searchByMonthHandle() {
     console.log("Search By Month");
   }
@@ -119,11 +120,11 @@ function GeneralPurchasesTable({
     <div>
       <Table
         addButtonName="Add General Purchase"
-        searchByMonth="Search By Month"
+        // searchBy="Search By Month"
         tablePageName="Employees Salaries Table"
         headersList={headersList}
         serachPlaceHolder="Search purchase"
-        searchByMonthHandle={searchByMonthHandle}
+        // searchByHandle={searchByMonthHandle}
         dataTableRow={generalPurchasesTableRow}
         tableRowSelector="table_row_generalPurchases"
         addModalOpenHandle={openAddGeneralPurchaseHandle}

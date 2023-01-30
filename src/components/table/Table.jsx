@@ -13,8 +13,10 @@ function Table({
   tableRowSelector,
   addModalOpenHandle,
   setSearchInput,
-  searchByMonth,
-  searchByMonthHandle,
+  searchBy,
+  searchByHandle,
+  todayData,
+  todayVoucherDataHandle,
 }) {
   const [clicked, setClicked] = useState(false);
 
@@ -58,17 +60,26 @@ function Table({
       </h2>
 
       <div className="table_searchWrapper">
+        {todayData && (
+          <div>
+            <input
+              type="checkbox"
+              onChange={() => todayVoucherDataHandle((prev) => !prev)}
+            />
+            <label>Today Vouchers</label>
+          </div>
+        )}
         {addButtonName && (
           <>
             <button onClick={addModalOpenHandle}>{addButtonName}</button>
-            {searchByMonth && (
+            {searchBy && (
               <button
                 onClick={() => {
-                  searchByMonthHandle();
+                  searchByHandle();
                   setClicked((prev) => !prev);
                 }}
               >
-                {searchByMonth}
+                {searchBy}
               </button>
             )}
           </>

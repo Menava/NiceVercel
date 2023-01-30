@@ -11,8 +11,8 @@ import { getVouchers } from "../../redux/Apicall";
 function VouchersTable() {
   const navigate = useNavigate();
   const { vouchers } = useSelector((state) => state.modalsAndData);
-
   const [searchInput, setSearchInput] = useState("");
+  const [showTodayVoucher, setShowTodayVoucher] = useState(false);
   const dispatch = useDispatch();
 
   const headersList = [
@@ -32,6 +32,26 @@ function VouchersTable() {
   }, [dispatch]);
 
   function handleSearchFunc() {
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var addZero = "0" + month.toString();
+    var day = dateObj.getUTCDate().toString();
+    var year = dateObj.getUTCFullYear().toString();
+    const monthData = month.toString().length > 1 ? month : addZero;
+    const newdate = year + "-" + monthData + "-" + day;
+
+    if (showTodayVoucher) {
+      return vouchers
+        .filter((voc) => voc.date === newdate)
+        .filter(
+          (voucher) =>
+            voucher.customerCar_id.customer.name.includes(searchInput) ||
+            voucher.customerCar_id.customer.name
+              .toLocaleLowerCase()
+              .includes(searchInput)
+        );
+    }
+
     return vouchers.filter(
       (voucher) =>
         voucher.customerCar_id.customer.name.includes(searchInput) ||
@@ -87,6 +107,8 @@ function VouchersTable() {
   return (
     <div className="voucher">
       <Table
+        todayData="Something"
+        todayVoucherDataHandle={setShowTodayVoucher}
         tablePageName="Vouchers table"
         headersList={headersList}
         serachPlaceHolder="Search Vouchers"
