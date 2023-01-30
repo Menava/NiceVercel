@@ -3,6 +3,22 @@
 
 .dashboard_wrapper {
   padding: $padding-header;
+
+  .filter-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    gap: 10px;
+    .radio-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background-color: $primary-color;
+      color: $onPrimary-color;
+      border-radius: 10px;
+    }
+  }
   .dashboard_top {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

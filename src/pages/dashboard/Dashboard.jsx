@@ -109,6 +109,20 @@ function Dashboard() {
 
   return (
     <div className="dashboard_wrapper">
+      <div className="filter-container">
+        <div className="radio-container">
+          <p>Today</p>
+          <input type="radio" />
+        </div>
+        <div className="radio-container">
+          <p>Previous Week</p>
+          <input type="radio" />
+        </div>
+        <div className="radio-container">
+          <p>Today</p>
+          <input type="radio" />
+        </div>
+      </div>
       <div className="dashboard_top">
         <div className="dashboard_count">
           <div className="dashboard_countLeft">
