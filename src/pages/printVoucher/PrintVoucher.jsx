@@ -97,7 +97,8 @@ function PrintVoucher() {
           <div className="voucher_headerLeft">
             <img
               className="voucher_image"
-              src="https://www.billboard.com/wp-content/uploads/2022/05/nayeon-twice-2022-press-billboard-1548.png?w=1024"
+              src="https://drive.google.com/uc?export=view&id=1n0Tj_AYeT5C1nYAVST4_iSbxRHYLqVIK"
+              alt="dirve image"
             />
             <div className="voucher_header">
               <h3>Nice</h3>
