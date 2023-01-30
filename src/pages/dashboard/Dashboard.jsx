@@ -13,8 +13,11 @@ function Dashboard() {
   const [allServices, setAllServices] = useState(null);
   const [allItems, setAllItems] = useState(null);
   const [itemIncome, setItemIncome] = useState(true);
+
+  const [options, setOptions] = useState("today");
+
   useEffect(() => {
-    VoucherService.Get_ItemProfit().then((resp) => {
+    VoucherService.Get_ItemProfit(options).then((resp) => {
       console.log("resp", resp);
       setAllServices({
         labels: resp.service.map((ser) => ser.name),
@@ -110,17 +113,17 @@ function Dashboard() {
   return (
     <div className="dashboard_wrapper">
       <div className="filter-container">
-        <div className="radio-container">
+        <div className="radio-container" onClick={() => setOptions("today")}>
           <p>Today</p>
-          <input type="radio" />
+          <input type="radio" checked={options === "today"} />
         </div>
-        <div className="radio-container">
+        <div className="radio-container" onClick={() => setOptions("week")}>
           <p>Previous Week</p>
-          <input type="radio" />
+          <input type="radio" checked={options === "week"} />
         </div>
-        <div className="radio-container">
-          <p>Today</p>
-          <input type="radio" />
+        <div className="radio-container" onClick={() => setOptions("month")}>
+          <p>Month</p>
+          <input type="radio" checked={options === "month"} />
         </div>
       </div>
       <div className="dashboard_top">

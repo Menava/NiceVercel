@@ -78,12 +78,15 @@ export default class VoucherService {
     ).then((resp) => resp.json());
   }
 
-  static Get_ItemProfit() {
-    return fetch(`https://genshinimpact1234.pythonanywhere.com/itemprofit`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((resp) => resp.json());
+  static Get_ItemProfit(option) {
+    return fetch(
+      `https://genshinimpact1234.pythonanywhere.com/itemprofit${option}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
   }
 }
