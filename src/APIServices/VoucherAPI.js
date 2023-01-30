@@ -80,7 +80,7 @@ export default class VoucherService {
 
   static Get_ItemProfit(option) {
     return fetch(
-      `https://genshinimpact1234.pythonanywhere.com/itemprofit${option}`,
+      `https://genshinimpact1234.pythonanywhere.com/itemprofit/${option}`,
       {
         method: "GET",
         headers: {
