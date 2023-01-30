@@ -10,16 +10,19 @@ import "./dashboard.scss";
 
 function Dashboard() {
   const [dashboarDetails, setDashboardDetails] = useState(null);
+  const [dashboardTopResponse, setDashboardTopResponse] = useState({});
   const [allServices, setAllServices] = useState(null);
   const [allItems, setAllItems] = useState(null);
   const [itemIncome, setItemIncome] = useState(true);
-
   const [options, setOptions] = useState("today");
-
+  const [totalProfit, setTotalProfit] = useState(0);
   useEffect(() => {
-    VoucherService.GetSales(options).then((resp) => console.log("resp", resp));
+    VoucherService.GetSales(options).then((resp) =>
+      setDashboardTopResponse(resp)
+    );
     VoucherService.Get_ItemProfit(options).then((resp) => {
-      console.log("resp", resp);
+      console.log(resp);
+      setTotalProfit(resp["item profit total"] + resp["service total"]);
       setAllServices({
         labels: resp.service.map((ser) => ser.name),
         datasets: [
@@ -128,31 +131,19 @@ function Dashboard() {
         </div>
       </div>
       <div className="dashboard_top">
-        <div className="dashboard_count">
-          <div className="dashboard_countLeft">
-            <p>50000</p>
-            <h3>Today Income</h3>
+        {Object?.keys(dashboardTopResponse).map((objKey, index) => (
+          <div className="dashboard_count" key={index}>
+            <div className="dashboard_countLeft">
+              <p>{dashboardTopResponse[objKey]}</p>
+              <h3>{objKey}</h3>
+            </div>
+            <MdHomeRepairService className="dashboard_countIcon" />
           </div>
-          <MdHomeRepairService className="dashboard_countIcon" />
-        </div>
+        ))}
         <div className="dashboard_count">
           <div className="dashboard_countLeft">
-            <p>400+</p>
-            <h3>Customer</h3>
-          </div>
-          <MdHomeRepairService className="dashboard_countIcon" />
-        </div>
-        <div className="dashboard_count">
-          <div className="dashboard_countLeft">
-            <p>400+</p>
-            <h3>Customer</h3>
-          </div>
-          <MdHomeRepairService className="dashboard_countIcon" />
-        </div>
-        <div className="dashboard_count">
-          <div className="dashboard_countLeft">
-            <p>400+</p>
-            <h3>Customer</h3>
+            <p>{totalProfit}</p>
+            <h3>Total Profit</h3>
           </div>
           <MdHomeRepairService className="dashboard_countIcon" />
         </div>
