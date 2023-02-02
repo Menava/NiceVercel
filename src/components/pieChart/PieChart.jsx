@@ -1,7 +1,7 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
-function DoughnutChart({ chartData }) {
+function PieChart({ chartData }) {
   const options = {
     responsive: true, // Make it responsive
     maintainAspectRatio: false,
@@ -14,7 +14,7 @@ function DoughnutChart({ chartData }) {
     },
   };
 
-  return <Doughnut data={chartData} options={options} className="chart" />;
+  return <Pie data={chartData} options={options} className="chart" />;
 }
 
-export default DoughnutChart;
+export default PieChart;
