@@ -84,6 +84,21 @@ function Pages({
               />
             }
           />
+          {/* <Route
+            path="-$tables/income"
+            element={
+              <GeneralPurchasesTable
+                generalPurchase={generalPurchase}
+                setGeneralPurchase={setGeneralPurchase}
+                purchaseOptions={purchaseOptions}
+                setPurchaseOptions={setPurchaseOptions}
+                selectedPurchaseOptions={selectedPurchaseOptions}
+                setSelectedPurchaseOptions={setSelectedPurchaseOptions}
+                toEditGeneralPurchaseId={toEditGeneralPurchaseId}
+                setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
+              />
+            }
+          /> */}
           <Route
             path="-$tables/itemPurchases"
             element={<ItemPurchasesTable />}

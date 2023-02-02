@@ -51,6 +51,7 @@ const GeneralPurchaseModal = ({
     getGeneralPurchases(dispatch);
     dispatch(closeModal());
   }
+
   console.log("selectedPurchaseOptions", selectedPurchaseOptions);
   return (
     <div
