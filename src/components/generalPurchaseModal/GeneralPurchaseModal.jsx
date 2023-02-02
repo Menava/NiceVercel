@@ -52,7 +52,6 @@ const GeneralPurchaseModal = ({
     dispatch(closeModal());
   }
 
-  console.log("selectedPurchaseOptions", selectedPurchaseOptions);
   return (
     <div
       className="addNewItemModal_wrapper"

@@ -19,6 +19,7 @@ function EmployeeSalariesTable() {
     "Date",
     "Actions",
   ];
+
   const [searchInput, setSearchInput] = useState("");
   const dispatch = useDispatch();
 

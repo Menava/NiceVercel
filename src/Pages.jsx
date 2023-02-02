@@ -27,6 +27,7 @@ import PrintVoucher from "./pages/printVoucher/PrintVoucher";
 import WaitingListsTable from "./pages/waitingListsTable/WaitingListsTable";
 import VouDetail from "./components/vouDetail/VouDetail";
 import ItemPurchasesTable from "./pages/itemPurchasesTable/ItemPurchasesTable";
+import IncomeTable from "./pages/incomeTable/IncomeTable";
 
 function Pages({
   generalPurchase,
@@ -84,21 +85,7 @@ function Pages({
               />
             }
           />
-          {/* <Route
-            path="-$tables/income"
-            element={
-              <GeneralPurchasesTable
-                generalPurchase={generalPurchase}
-                setGeneralPurchase={setGeneralPurchase}
-                purchaseOptions={purchaseOptions}
-                setPurchaseOptions={setPurchaseOptions}
-                selectedPurchaseOptions={selectedPurchaseOptions}
-                setSelectedPurchaseOptions={setSelectedPurchaseOptions}
-                toEditGeneralPurchaseId={toEditGeneralPurchaseId}
-                setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
-              />
-            }
-          /> */}
+          <Route path="-$tables/income" element={<IncomeTable />} />
           <Route
             path="-$tables/itemPurchases"
             element={<ItemPurchasesTable />}

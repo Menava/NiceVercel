@@ -68,6 +68,7 @@ import NotificationService from "./APIServices/NotificationAPI";
 import { finishLoading, startLoading } from "./redux/loadingSlice";
 import EmployeePayrollService from "./APIServices/EmployeePayrollAPI";
 import GeneralPurchaseModal from "./components/generalPurchaseModal/GeneralPurchaseModal";
+import IncomeModal from "./components/icomeModal/IncomeModal";
 
 function App() {
   const { username, position } = useSelector((state) => state.user);
@@ -95,6 +96,7 @@ function App() {
     Price: "",
     Quantity: "",
   });
+
   const [purchaseOptions, setPurchaseOptions] = useState({
     Cooking: "",
     General: "",
@@ -616,6 +618,10 @@ function App() {
                 //   handleFunction={addGeneralPurchaseHandle}
                 //   buttonName="General Purchase"
                 // />
+              )}
+              {/* Income modal */}
+              {modalsAndData.openIncomeModal && (
+                <IncomeModal buttonName="Add Income" />
               )}
               {/* Give Employee salaries Modal */}
               {modalsAndData.openGiveSalaryModal && <GiveEmployeeSalaryModal />}

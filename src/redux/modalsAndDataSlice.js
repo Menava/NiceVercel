@@ -30,6 +30,7 @@ const modalsAndDataSlice = createSlice({
     openAddCustomerItemServiceStatus: false,
     openGiveSalaryModal: false,
     openGeneralPurhcaseModal: false,
+    openIncomeModal: false,
     openExternalItemModal: false,
     openAddNewServicePlaceModal: false,
     openWaitingModal: false,
@@ -42,7 +43,6 @@ const modalsAndDataSlice = createSlice({
     customerFinalSignature: "",
     employeeFinalSignature: "",
     userSelectedImage: "",
-
     waitingCurrentList: "",
     // For service Status Detail
     serviceId: "",
@@ -112,6 +112,19 @@ const modalsAndDataSlice = createSlice({
       Quantity: "",
     },
 
+    // income intital values
+    incomeInitialValues: {
+      Description: "",
+      "Income Amount": "",
+      Type: "",
+    },
+
+    incomeOptions: [
+      { option: "Something1", selected: false },
+      { option: "Something2", selected: false },
+      { option: "Something3", selected: false },
+    ],
+
     itemsRestockValues: {
       "Item Name": "",
       "Restock Qty": "",
@@ -149,6 +162,7 @@ const modalsAndDataSlice = createSlice({
     suppliers: [],
     employeeSalaries: [],
     generalPurchases: [],
+    incomes: [],
     externalItems: [],
     waitingLists: [],
     // Edit Button Click check
@@ -163,6 +177,30 @@ const modalsAndDataSlice = createSlice({
     toDeleteGeneralPurchaseId: "",
   },
   reducers: {
+    openIncomeModal: (state) => {
+      state.openIncomeModal = true;
+      state.incomeInitialValues["Income Amount"] = "";
+      state.incomeInitialValues.Type = "";
+    },
+    changeIncomeInputHandle: (state, action) => {
+      const { toChangeProperty, data } = action.payload;
+      state.incomeInitialValues[toChangeProperty] = data;
+    },
+    changeSelectedIncomeOptions: (state, action) => {
+      const { toChangeOption } = action.payload;
+      const copiedAry = [...state.incomeOptions];
+      copiedAry.map((copAry) =>
+        copAry.option === toChangeOption
+          ? (copAry.selected = true)
+          : (copAry.selected = false)
+      );
+
+      const selectedOptionIndex = copiedAry.findIndex(
+        (copAry) => copAry.selected
+      );
+      state.incomeInitialValues.Type = copiedAry[selectedOptionIndex].option;
+      state.incomeOptions = copiedAry;
+    },
     openEditGeneralPurchaseModal: (state) => {
       state.openEditGeneralPurchaseModal = true;
     },
@@ -244,14 +282,20 @@ const modalsAndDataSlice = createSlice({
     removeUserSelectedImage: (state) => {
       state.userSelectedImage = "";
     },
+    fetchGetIncomes: (state, action) => {
+      const { data } = action.payload;
+      state.incomes = data;
+    },
     fetchGeneralPurchases: (state, action) => {
       const { data } = action.payload;
       state.generalPurchases = data;
     },
+
     fetchEmployeeSalaries: (state, action) => {
       const { data } = action.payload;
       state.employeeSalaries = data;
     },
+
     openGeneralPurhcaseModal: (state) => {
       state.openGeneralPurhcaseModal = true;
       state.generalPurchaseInitialValues.Description = "";
@@ -259,6 +303,7 @@ const modalsAndDataSlice = createSlice({
       state.generalPurchaseInitialValues.Quantity = "";
       state.generalPurchaseInitialValues.Type = "";
     },
+
     openGiveSalaryModal: (state) => {
       state.openGiveSalaryModal = true;
     },
@@ -471,15 +516,6 @@ const modalsAndDataSlice = createSlice({
     disconnectItemSet: (state, action) => {
       const { data } = action.payload;
       state.items = JSON.parse(data);
-      // Cookies.remove("items", { path: "/" });
-      // Cookies.set("items", JSON.stringify(state.items), {
-      //   path: "/",
-      // });
-      // Cookies.remove("refillItems", { path: "/" });
-      // Cookies.set("refillItems", data, {
-      //   path: "/",
-      // });
-      // console.log("refill Item", Cookies.get("refillItems"));
     },
 
     resetItemAfterRemoveAddedService: (state) => {
@@ -596,6 +632,7 @@ const modalsAndDataSlice = createSlice({
       // const copiedDisconnectItems = [...items];
     },
     closeModal: (state) => {
+      state.openIncomeModal = false;
       state.openEditCustomerModal = false;
       state.openEditServiceModal = false;
       state.openEditItemsModal = false;
@@ -668,6 +705,9 @@ const modalsAndDataSlice = createSlice({
 });
 
 export const {
+  openIncomeModal,
+  changeIncomeInputHandle,
+  changeSelectedIncomeOptions,
   fetchVouchers,
   openPayModal,
   openModalCustomer,
