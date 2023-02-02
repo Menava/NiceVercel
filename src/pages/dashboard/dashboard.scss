@@ -50,6 +50,13 @@
         color: $onPrimary-color;
       }
     }
+
+    @media (max-width: $tablets-breakpoint) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $mobiles-breakpoint) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   .charts_wrapper {
@@ -103,6 +110,56 @@
         height: 100%;
         width: 100%;
       }
+    }
+
+    @media (max-width: $tablets-breakpoint) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .chart_wrapper_bottom {
+    position: relative;
+    height: 400px;
+    background-color: $primary-color;
+    border-radius: 10px;
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: 18px;
+      color: white;
+    }
+    h3 {
+      position: absolute;
+      top: 90%;
+      right: 0%;
+      transform: translateX(-50%);
+      font-weight: 500;
+      color: white;
+    }
+
+    button {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateX(-50%);
+      font-weight: 500;
+      z-index: 10000;
+      border: none;
+      padding: 5px;
+      background-color: $primary-color;
+      color: $onPrimary-color;
+    }
+
+    .chart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
     }
   }
 }

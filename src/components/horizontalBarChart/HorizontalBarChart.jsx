@@ -1,9 +1,9 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import { Bar } from "react-chartjs-2";
 
-function LineChart({ chartData }) {
+function HorizontalBarChart({ chartData }) {
   const options = {
+    indexAxis: "y",
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -27,7 +27,7 @@ function LineChart({ chartData }) {
       },
     },
   };
-  return <Line data={chartData} options={options} className="chart" />;
+  return <Bar data={chartData} options={options} className="chart" />;
 }
 
-export default LineChart;
+export default HorizontalBarChart;
