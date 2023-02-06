@@ -1,59 +1,79 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import GeneralIncomeService from "../../APIServices/GeneralIncome";
 import Table from "../../components/table/Table";
 import { getGeneralPurchases } from "../../redux/Apicall";
 import {
-  openDeleteGeneralPurchaseModal,
-  openEditGeneralPurchaseModal,
-  openGeneralPurhcaseModal,
+  getAllIncomes,
+  openEditIncomeModal,
   openIncomeModal,
+  openDeleteIncomeModal,
 } from "../../redux/modalsAndDataSlice";
 
 function IncomeTable() {
-  const headersList = ["No", "Id", "Income Amount", "Type", "Date", "Actions"];
+  const headersList = [
+    "No",
+    "Id",
+    "Income Amount",
+    "Description",
+    "Type",
+    "Date",
+    "Actions",
+  ];
   const [searchInput, setSearchInput] = useState("");
   const dispatch = useDispatch();
-  const { incomes, incomeInitialValues } = useSelector(
+
+  const { allIncomes, incomeInitialValues } = useSelector(
     (state) => state.modalsAndData
   );
-  console.log("incomes", incomes);
-  // const generalPurchasesTableRow = generalPurchases.map((gp, index) => {
-  //   return (
-  //     <tr className="table_row_generalPurchases" key={gp.id}>
-  //       <td>{index + 1}</td>
-  //       <td>{gp.id}</td>
-  //       <td>{gp.description}</td>
-  //       <td>{gp.purchase_type}</td>
-  //       <td>{gp.quantity}</td>
-  //       <td>{gp.unit_price}</td>
-  //       <td>{gp.total}</td>
-  //       <td>{gp.purchase_date}</td>
-  //       <td>
-  //         <button
-  //           className="table_editBtn"
-  //           onClick={() =>
-  //             openEditGeneralPurchaseHandle(
-  //               gp.description,
-  //               gp.quantity,
-  //               gp.unit_price,
-  //               gp.purchase_type,
-  //               gp.id
-  //             )
-  //           }
-  //         >
-  //           Edit
-  //         </button>
-  //         <button
-  //           className="table_deleteBtn"
-  //           onClick={() => deleteGeneralPurchaseHandle(gp.id)}
-  //         >
-  //           Delete
-  //         </button>
-  //       </td>
-  //     </tr>
-  //   );
-  // });
+
+  useEffect(() => {
+    async function getIncomes() {
+      await GeneralIncomeService.GetGeneralIncomes().then((res) => {
+        dispatch(getAllIncomes({ data: res }));
+      });
+    }
+    getIncomes();
+  }, []);
+
+  const openEditModal = (id, description, amount, incomeType) => {
+    dispatch(openEditIncomeModal({ id, description, amount, incomeType }));
+  };
+
+  const openDeleteModal = (toChangeId) => {
+    dispatch(openDeleteIncomeModal({ data: toChangeId }));
+  };
+
+  const generalIncomesTable = allIncomes.map((gp, index) => {
+    return (
+      <tr className="table_row_generalPurchases" key={gp.id}>
+        <td>{index + 1}</td>
+        <td>{gp.id}</td>
+        <td>{gp.description}</td>
+        <td>{gp.amount}</td>
+        <td>{gp.income_type}</td>
+        <td>{gp.income_date}</td>
+        <td>
+          <button
+            className="table_editBtn"
+            onClick={() =>
+              openEditModal(gp.id, gp.description, gp.amount, gp.income_type)
+            }
+          >
+            Edit
+          </button>
+          <button
+            className="table_deleteBtn"
+            onClick={() => openDeleteModal(gp.id)}
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    );
+  });
+
   function openIncomeModalHandle() {
     dispatch(openIncomeModal());
   }
@@ -67,7 +87,7 @@ function IncomeTable() {
         headersList={headersList}
         serachPlaceHolder="Search income"
         // searchByHandle={searchByMonthHandle}
-        // dataTableRow={generalPurchasesTableRow}
+        dataTableRow={generalIncomesTable}
         // tableRowSelector="table_row_generalPurchases"
         addModalOpenHandle={openIncomeModalHandle}
         setSearchInput={setSearchInput}

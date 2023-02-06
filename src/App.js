@@ -6,10 +6,8 @@ import PopupModal from "./components/popupModal/PopupModal";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Pages from "./Pages";
 import Login from "./pages/Login/Login";
-import { alreadyLogin, login, withoutPermission } from "./redux/userSlice";
-import { io } from "socket.io-client";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import GeneralIncomeService from "./APIServices/GeneralIncome";
 import {
   disconnectItems,
   editCustomer,
@@ -28,6 +26,7 @@ import {
   closeModal,
   disconnectItemHandle,
   disconnectItemSet,
+  getAllIncomes,
   openModalNavSidebar,
   resetItemsOnDisconnect,
   setCustomerFinalSignature,
@@ -74,8 +73,6 @@ function App() {
   const { username, position } = useSelector((state) => state.user);
   const modalsAndData = useSelector((state) => state.modalsAndData);
   const addedService = useSelector((state) => state.addedService);
-  // console.log("AddedServices", addedService.addedServices);
-  // console.log("Items", modalsAndData.items);
   const { customerInitialValues, employeeInitialValues } = modalsAndData;
   const { employeeLeader } = useSelector((state) => state.prepareserviceInputs);
   const { socket } = useSelector((state) => state.socket);
@@ -108,62 +105,6 @@ function App() {
 
   const [selectedPurchaseOptions, setSelectedPurchaseOptions] = useState("");
   const [toEditGeneralPurchaseId, setToEditGeneralPurchaseId] = useState("");
-  // useEffect(() => {
-  //   function onBeforeunload(e) {
-  //     e.preventDefault();
-  //     Cookies.remove("addedService", { path: "/" });
-  //     // Cookies.remove("items", { path: "/" });
-  //     e.returnValue = "";
-  //   }
-
-  //   window.addEventListener("beforeunload", onBeforeunload);
-
-  //   return () => window.removeEventListener("beforeunload", onBeforeunload);
-  // }, []);
-
-  // useEffect(() => {
-  //   socket.on("user-connected-self-excluded", (data) => {
-  //     socket.emit(
-  //       "item_event",
-  //       Cookies.get("refillItems"),
-  //       Cookies.get("items")
-  //     );
-  //   });
-
-  //   return () => socket.disconnect();
-  // }, []);
-
-  // useEffect(() => {
-  //   socket.on("receive_items", function (data) {
-  //     getItems(dispatch, "SOCKET", data);
-  //   });
-
-  //   socket.on("disconnect", (data) => {
-  //     dispatch(disconnectItemSet({ data }));
-  //   });
-
-  //   return () => {
-  //     socket.disconnect();
-  //   };
-  // }, [socket]);
-
-  // Check user is in local storage or not
-
-  useEffect(() => {
-    async function fetchSession() {
-      // const session = await AppService.GetSession();
-      // if (session.user !== null) {
-      //   dispatch(
-      //     alreadyLogin({
-      //       name: session.user.name,
-      //       username: session.user.username,
-      //       position: session.user.position,
-      //     })
-      //   );
-      // }
-    }
-    fetchSession();
-  }, []);
 
   useEffect(() => {
     dispatch(fetchAddedServiceFromCookie());
@@ -341,9 +282,6 @@ function App() {
   }
 
   async function addServiceStatusCustomerItemHandle() {
-    // console.log("service Place Id", modalsAndData.servicePlaceId);
-    // console.log("service Id", modalsAndData.serviceId);
-    // console.log("Customer Id", modalsAndData.servicePlaceCustomerId);
     if (
       modalsAndData.serviceStatusCustomerInputInitialValues["Item Name"] === ""
     )
@@ -523,21 +461,15 @@ function App() {
     dispatch(closeModal());
   }
 
-  // async function editGeneralPurchase() {
-  //   const toChangeId = modalsAndData.toEditGeneralPurchaseId;
-  //   const Description = modalsAndData.generalPurchase.Description;
-  //   const Quantity = modalsAndData.generalPurchase.Quantity;
-  //   const UnitPrice = modalsAndData.generalPurchase.UnitPrice;
-  //   await GeneralPurchaseService.UpdateGeneralPurchase(toChangeId, {
-  //     description: modalsAndData.generalPurchase.Description,
-  //     unit_price: modalsAndData.generalPurchase.UnitPrice,
-  //     quantity: modalsAndData.generalPurchase.Quantity,
-  //     purchase_type: "Cost",
-  //   });
-  //   getGeneralPurchases(dispatch);
-  //   dispatch(closeModal());
-  // }
-  //
+  async function deleteIncomeHandle() {
+    const toChangeId = modalsAndData.toChangeIncomeId;
+    await GeneralIncomeService.DeleteGeneralIncome(toChangeId);
+    await GeneralIncomeService.GetGeneralIncomes().then((res) => {
+      dispatch(getAllIncomes({ data: res }));
+    });
+    dispatch(closeModal());
+  }
+
   return (
     <BrowserRouter>
       {!username ? (
@@ -567,6 +499,9 @@ function App() {
               )}
               {modalsAndData.openDeleteGeneralPurchaseModal && (
                 <DeleteItemModal handleFunction={deleteGeneralPurchase} />
+              )}
+              {modalsAndData.deleteIncomeModal && (
+                <DeleteItemModal handleFunction={deleteIncomeHandle} />
               )}
               {/* Open pay Modal */}
               {modalsAndData.payModal && (
@@ -622,6 +557,9 @@ function App() {
               {/* Income modal */}
               {modalsAndData.openIncomeModal && (
                 <IncomeModal buttonName="Add Income" />
+              )}
+              {modalsAndData.openEditIncomeModal && (
+                <IncomeModal buttonName="Edit Income" edit />
               )}
               {/* Give Employee salaries Modal */}
               {modalsAndData.openGiveSalaryModal && <GiveEmployeeSalaryModal />}

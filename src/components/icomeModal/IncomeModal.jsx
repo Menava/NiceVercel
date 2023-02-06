@@ -2,14 +2,17 @@ import React from "react";
 import "./incomeModal.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addIncome,
+  changeEditIncome,
   changeIncomeInputHandle,
   changeSelectedIncomeOptions,
   closeModal,
 } from "../../redux/modalsAndDataSlice";
 import { useRef } from "react";
+import GeneralIncomeService from "../../APIServices/GeneralIncome";
 
-const IncomeModal = ({ buttonName }) => {
-  const { incomeInitialValues, incomeOptions } = useSelector(
+const IncomeModal = ({ buttonName, edit }) => {
+  const { incomeInitialValues, incomeOptions, toChangeIncomeId } = useSelector(
     (state) => state.modalsAndData
   );
 
@@ -26,15 +29,31 @@ const IncomeModal = ({ buttonName }) => {
     dispatch(changeSelectedIncomeOptions({ toChangeOption }));
   }
 
-  function editIncomeHandle() {
-    alert("Edit Income handle tirggered");
+  async function editIncomeHandle() {
+    const id = toChangeIncomeId;
+    const description = incomeInitialValues.Description;
+    const amount = incomeInitialValues["Income Amount"];
+    const type = incomeInitialValues.Type;
+
+    await GeneralIncomeService.UpdateGeneralIncome(id, {
+      description,
+      amount,
+      income_type: type,
+    }).then((res) => dispatch(changeEditIncome({ data: res })));
+
+    dispatch(closeModal());
   }
 
-  function addIncomeHandle() {
+  async function addIncomeHandle() {
     const description = incomeInitialValues.Description;
     const incomeAmount = incomeInitialValues["Income Amount"];
     const incomeType = incomeInitialValues.Type;
-    console.log(description, incomeAmount, incomeType);
+    await GeneralIncomeService.InsertGeneralIncome({
+      description,
+      amount: incomeAmount,
+      income_type: incomeType,
+    }).then((res) => dispatch(addIncome({ data: res })));
+    dispatch(closeModal());
   }
 
   return (
@@ -84,7 +103,7 @@ const IncomeModal = ({ buttonName }) => {
         </div>
         <button
           className="buyItem_btn"
-          onClick={addIncomeHandle}
+          onClick={() => (edit ? editIncomeHandle() : addIncomeHandle())}
           // disabled={loading}
         >
           {/* {loading ? "Loading" : "General Purchase"} */}

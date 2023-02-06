@@ -1,3 +1,5 @@
+@import "../../scssVariables.scss";
+
 .deleteItemModal_wrapper {
   position: absolute;
   width: 100%;
@@ -14,5 +16,17 @@
     position: sticky;
     top: 0;
     width: 300px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    button {
+      border: none;
+      flex: 1;
+      background-color: $primary-color;
+      height: 30px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
   }
 }

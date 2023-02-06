@@ -24,7 +24,7 @@ function Dashboard() {
   useEffect(() => {
     VoucherService.Get_VoucherWeeklyChart().then((resp) => {
       setWeeklyChartData({
-        labels: resp["Vouche Weekly Chart"].map((weekData) => {
+        labels: resp["Vouche Weekly Chart"]?.map((weekData) => {
           const newDateFormat = new Date(weekData["Date"])
             .toISOString()
             .split("T")[0];

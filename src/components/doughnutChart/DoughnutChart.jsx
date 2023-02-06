@@ -7,6 +7,7 @@ function DoughnutChart({ chartData }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
+        display: false,
         labels: {
           color: "white",
         },

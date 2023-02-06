@@ -1,9 +1,16 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
+const INITIAL_INCOMES_OPTIONS = [
+  { option: "Something1", selected: false },
+  { option: "Something2", selected: false },
+  { option: "Something3", selected: false },
+];
+
 const modalsAndDataSlice = createSlice({
   name: "modal",
   initialState: {
+    openEditIncomeModal: false,
     openEditEmployeeSalryModal: false,
     openDeleteEmployeeSalaryModal: false,
     openEditCustomerModal: false,
@@ -119,11 +126,9 @@ const modalsAndDataSlice = createSlice({
       Type: "",
     },
 
-    incomeOptions: [
-      { option: "Something1", selected: false },
-      { option: "Something2", selected: false },
-      { option: "Something3", selected: false },
-    ],
+    incomeOptions: INITIAL_INCOMES_OPTIONS,
+
+    allIncomes: [],
 
     itemsRestockValues: {
       "Item Name": "",
@@ -175,12 +180,57 @@ const modalsAndDataSlice = createSlice({
     openEditGeneralPurchaseModal: false,
     toEditGeneralPurchaseId: "",
     toDeleteGeneralPurchaseId: "",
+    toChangeIncomeId: "",
+    deleteIncomeModal: false,
   },
   reducers: {
+    openDeleteIncomeModal: (state, action) => {
+      const { data } = action.payload;
+      state.deleteIncomeModal = true;
+      state.toChangeIncomeId = data;
+    },
+    changeEditIncome: (state, action) => {
+      const { data } = action.payload;
+
+      const copied = [...state.allIncomes];
+      const ChangedAry = copied.map((res) => (res.id === data.id ? data : res));
+      state.allIncomes = ChangedAry;
+    },
+    getAllIncomes: (state, action) => {
+      const { data } = action.payload;
+      state.allIncomes = data;
+    },
+    addIncome: (state, action) => {
+      const { data } = action.payload;
+      state.allIncomes = [...state.allIncomes, data];
+    },
+    openEditIncomeModal: (state, action) => {
+      const { id, description, amount, incomeType } = action.payload;
+      state.toChangeIncomeId = id;
+      console.log(incomeType);
+      state.incomeInitialValues.Description = description;
+      state.incomeInitialValues["Income Amount"] = amount;
+      state.openEditIncomeModal = true;
+
+      const copiedAry = [...state.incomeOptions];
+      copiedAry.map((copAry) =>
+        copAry.option === incomeType
+          ? (copAry.selected = true)
+          : (copAry.selected = false)
+      );
+
+      const selectedOptionIndex = copiedAry.findIndex(
+        (copAry) => copAry.selected
+      );
+      state.incomeInitialValues.Type = copiedAry[selectedOptionIndex].option;
+      state.incomeOptions = copiedAry;
+    },
     openIncomeModal: (state) => {
       state.openIncomeModal = true;
       state.incomeInitialValues["Income Amount"] = "";
       state.incomeInitialValues.Type = "";
+      state.incomeInitialValues.Description = "";
+      state.incomeOptions = INITIAL_INCOMES_OPTIONS;
     },
     changeIncomeInputHandle: (state, action) => {
       const { toChangeProperty, data } = action.payload;
@@ -194,7 +244,6 @@ const modalsAndDataSlice = createSlice({
           ? (copAry.selected = true)
           : (copAry.selected = false)
       );
-
       const selectedOptionIndex = copiedAry.findIndex(
         (copAry) => copAry.selected
       );
@@ -281,10 +330,6 @@ const modalsAndDataSlice = createSlice({
     },
     removeUserSelectedImage: (state) => {
       state.userSelectedImage = "";
-    },
-    fetchGetIncomes: (state, action) => {
-      const { data } = action.payload;
-      state.incomes = data;
     },
     fetchGeneralPurchases: (state, action) => {
       const { data } = action.payload;
@@ -632,6 +677,7 @@ const modalsAndDataSlice = createSlice({
       // const copiedDisconnectItems = [...items];
     },
     closeModal: (state) => {
+      state.openEditIncomeModal = false;
       state.openIncomeModal = false;
       state.openEditCustomerModal = false;
       state.openEditServiceModal = false;
@@ -670,6 +716,7 @@ const modalsAndDataSlice = createSlice({
       state.openDeleteEmployeeSalaryModal = false;
       state.openDeleteGeneralPurchaseModal = false;
       state.openEditGeneralPurchaseModal = false;
+      state.deleteIncomeModal = false;
     },
     // Supplier Actions
     fetchSuppliers: (state, action) => {
@@ -705,6 +752,11 @@ const modalsAndDataSlice = createSlice({
 });
 
 export const {
+  openDeleteIncomeModal,
+  changeEditIncome,
+  openEditIncomeModal,
+  addIncome,
+  getAllIncomes,
   openIncomeModal,
   changeIncomeInputHandle,
   changeSelectedIncomeOptions,
