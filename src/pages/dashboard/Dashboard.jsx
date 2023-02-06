@@ -10,8 +10,6 @@ import PieChart from "../../components/pieChart/PieChart";
 import "./dashboard.scss";
 
 function Dashboard() {
-  // console.log(new Date("Fri, 27 Jan 2023 00:00:00 GMT").toISOString());
-
   const [dashboardTopResponse, setDashboardTopResponse] = useState({});
   const [allServices, setAllServices] = useState(null);
   const [allItems, setAllItems] = useState(null);
@@ -21,10 +19,13 @@ function Dashboard() {
   const [pieChartData, setPieChartData] = useState(null);
   const [horizontalBarChartData, setHorizontalBarChartData] = useState(null);
   const [weeklyChartData, setWeeklyChartData] = useState(null);
+
   useEffect(() => {
-    VoucherService.Get_VoucherWeeklyChart().then((resp) => {
+    const fetchVoucherWeeklyChart = async () => {
+      const resp = await VoucherService.Get_VoucherWeeklyChart();
+
       setWeeklyChartData({
-        labels: resp["Vouche Weekly Chart"]?.map((weekData) => {
+        labels: resp["Vouche Weekly Chart"].map((weekData) => {
           const newDateFormat = new Date(weekData["Date"])
             .toISOString()
             .split("T")[0];
@@ -50,14 +51,16 @@ function Dashboard() {
           },
         ],
       });
-    });
-    VoucherService.GetSales(options).then((resp) => {
+    };
+
+    const fetchGetSales = async () => {
+      const resp = await VoucherService.GetSales(options);
       setHorizontalBarChartData({
-        labels: resp?.gp_chart.map((gpChart) => gpChart.Category),
+        labels: resp?.gp_chart?.map((gpChart) => gpChart.Category),
         datasets: [
           {
             label: "General Purchase Breakdown",
-            data: resp.gp_chart.map((gpChart) => gpChart.Total),
+            data: resp?.gp_chart?.map((gpChart) => gpChart.Total),
             backgroundColor: [
               "rgba(255, 99, 132, 0.5)",
               "rgba(255, 159, 64, 0.5)",
@@ -117,9 +120,10 @@ function Dashboard() {
         newObj[key] = resp[key];
       });
       setDashboardTopResponse(newObj);
-    });
+    };
 
-    VoucherService.Get_ItemProfit(options).then((resp) => {
+    const fetchItemProfit = async () => {
+      const resp = await VoucherService.Get_ItemProfit(options);
       setTotalProfit(resp["item profit total"] + resp["service total"]);
       setAllServices({
         labels: resp?.service.map((ser) => ser.name),
@@ -139,7 +143,6 @@ function Dashboard() {
           },
         ],
       });
-
       setAllItems({
         response: resp,
         itemResponse: {
@@ -161,16 +164,20 @@ function Dashboard() {
           ],
         },
       });
-    });
+    };
+
+    fetchVoucherWeeklyChart();
+    fetchGetSales();
+    fetchItemProfit();
   }, [options]);
-  console.log(weeklyChartData);
+
   const switchHandle = () => {
     setItemIncome((prev) => !prev);
     itemIncome
       ? setAllItems((prev) => ({
           ...prev,
           itemResponse: {
-            labels: prev.response.item.map((itm) => itm.name),
+            labels: prev?.response?.item.map((itm) => itm.name),
             datasets: [
               {
                 label: "Items",
@@ -191,11 +198,11 @@ function Dashboard() {
       : setAllItems((prev) => ({
           ...prev,
           itemResponse: {
-            labels: prev.response.item.map((itm) => itm.name),
+            labels: prev?.response?.item.map((itm) => itm.name),
             datasets: [
               {
                 label: "Items",
-                data: prev.response.item.map((itm) => itm.total_price),
+                data: prev?.response?.item.map((itm) => itm.total_price),
                 backgroundColor: [
                   "rgba(255, 99, 132, 0.5)",
                   "rgba(255, 159, 64, 0.5)",
@@ -210,7 +217,7 @@ function Dashboard() {
           },
         }));
   };
-  console.log(weeklyChartData);
+
   return (
     <div className="dashboard_wrapper">
       <div className="filter-container">
@@ -249,9 +256,10 @@ function Dashboard() {
           <MdHomeRepairService className="dashboard_countIcon" />
         </div>
       </div>
-      {allServices ? (
-        <>
-          <div className="charts_wrapper">
+
+      <>
+        <div className="charts_wrapper">
+          {allItems ? (
             <div className="chart_wrapper">
               <p>
                 {itemIncome
@@ -260,28 +268,34 @@ function Dashboard() {
               </p>
               <button
                 onClick={() => {
-                  console.log("switchHandle");
                   switchHandle();
                 }}
               >
                 Switch
               </button>
-              <DoughnutChart chartData={allItems.itemResponse} />
+              <DoughnutChart chartData={allItems?.itemResponse} />
               <h3>{itemIncome ? "Item Income" : "Item Profit"}</h3>
             </div>
+          ) : null}
+          {allServices ? (
             <div className="chart_wrapper">
               <BarChart chartData={allServices} />
             </div>
+          ) : null}
+
+          {pieChartData ? (
             <div className="chart_wrapper">
               <PieChart chartData={pieChartData} />
               <h3>Cost breakdown</h3>
             </div>
+          ) : null}
+          {horizontalBarChartData ? (
             <div className="chart_wrapper">
               <HorizontalBarChart chartData={horizontalBarChartData} />
             </div>
-          </div>
-        </>
-      ) : null}
+          ) : null}
+        </div>
+      </>
 
       {weeklyChartData ? (
         <div className="chart_wrapper_bottom">
