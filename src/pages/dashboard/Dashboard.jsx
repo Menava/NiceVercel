@@ -17,9 +17,10 @@ function Dashboard() {
   const [options, setOptions] = useState("today");
   const [totalProfit, setTotalProfit] = useState(0);
   useEffect(() => {
-    VoucherService.GetSales(options).then((resp) =>
-      setDashboardTopResponse(resp)
-    );
+    VoucherService.GetSales(options).then((resp) => {
+      console.log("resp", resp);
+      setDashboardTopResponse(resp);
+    });
     VoucherService.Get_ItemProfit(options).then((resp) => {
       console.log(resp);
       setTotalProfit(resp["item profit total"] + resp["service total"]);
