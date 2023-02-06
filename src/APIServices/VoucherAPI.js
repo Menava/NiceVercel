@@ -89,4 +89,15 @@ export default class VoucherService {
       }
     ).then((resp) => resp.json());
   }
+  static Get_VoucherWeeklyChart() {
+    return fetch(
+      "https://genshinimpact1234.pythonanywhere.com/voucher/sales/weekly",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
+  }
 }

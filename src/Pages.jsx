@@ -27,6 +27,7 @@ import PrintVoucher from "./pages/printVoucher/PrintVoucher";
 import WaitingListsTable from "./pages/waitingListsTable/WaitingListsTable";
 import VouDetail from "./components/vouDetail/VouDetail";
 import ItemPurchasesTable from "./pages/itemPurchasesTable/ItemPurchasesTable";
+import IncomeTable from "./pages/incomeTable/IncomeTable";
 
 function Pages({
   generalPurchase,
@@ -84,6 +85,7 @@ function Pages({
               />
             }
           />
+          <Route path="-$tables/income" element={<IncomeTable />} />
           <Route
             path="-$tables/itemPurchases"
             element={<ItemPurchasesTable />}

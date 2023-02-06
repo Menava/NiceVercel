@@ -79,6 +79,7 @@ function ItemsTable() {
   }
 
   const itemsTableRow = handleSearchFunc().map((item, index) => {
+    console.log("item", item);
     return (
       <tr
         className="table_row_items"
@@ -95,7 +96,16 @@ function ItemsTable() {
           {
             <button
               className="refund_btn"
-              onClick={(e) => openRefundItemModalHandle(e, item)}
+              onClick={(e) => {
+                if (item.refundable) {
+                  openRefundItemModalHandle(e, item);
+                  return;
+                }
+                if (!item.refundable) {
+                  e.stopPropagation();
+                  alert(`${item.name} is not refundalbe`);
+                }
+              }}
             >
               Refund
             </button>

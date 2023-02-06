@@ -4,8 +4,28 @@ import { Chart as ChartJS } from "chart.js/auto";
 
 function LineChart({ chartData }) {
   const options = {
-    responsive: true, // Make it responsive
+    responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+        labels: {
+          color: "#ffffff",
+        },
+      },
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          color: "#ffffff",
+        },
+      },
+      xAxes: {
+        ticks: {
+          color: "#ffffff",
+        },
+      },
+    },
   };
   return <Line data={chartData} options={options} className="chart" />;
 }

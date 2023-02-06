@@ -4,32 +4,129 @@ import { MdHomeRepairService } from "react-icons/md";
 import VoucherService from "../../APIServices/VoucherAPI";
 import BarChart from "../../components/barChart/BarChart";
 import DoughnutChart from "../../components/doughnutChart/DoughnutChart";
+import HorizontalBarChart from "../../components/horizontalBarChart/HorizontalBarChart";
 import LineChart from "../../components/lineChart/LineChart";
-
+import PieChart from "../../components/pieChart/PieChart";
 import "./dashboard.scss";
 
 function Dashboard() {
-  const [dashboarDetails, setDashboardDetails] = useState(null);
+  // console.log(new Date("Fri, 27 Jan 2023 00:00:00 GMT").toISOString());
+
   const [dashboardTopResponse, setDashboardTopResponse] = useState({});
   const [allServices, setAllServices] = useState(null);
   const [allItems, setAllItems] = useState(null);
   const [itemIncome, setItemIncome] = useState(true);
   const [options, setOptions] = useState("today");
   const [totalProfit, setTotalProfit] = useState(0);
+  const [pieChartData, setPieChartData] = useState(null);
+  const [horizontalBarChartData, setHorizontalBarChartData] = useState(null);
+  const [weeklyChartData, setWeeklyChartData] = useState(null);
   useEffect(() => {
-    VoucherService.GetSales(options).then((resp) => {
-      console.log("resp", resp);
-      setDashboardTopResponse(resp);
+    VoucherService.Get_VoucherWeeklyChart().then((resp) => {
+      setWeeklyChartData({
+        labels: resp["Vouche Weekly Chart"].map((weekData) => {
+          const newDateFormat = new Date(weekData["Date"])
+            .toISOString()
+            .split("T")[0];
+          weekData.Date = newDateFormat;
+          return weekData.Date;
+        }),
+        datasets: [
+          {
+            label: "Weekly Data",
+            borderColor: "rgb(53, 162, 235)",
+            data: resp?.["Vouche Weekly Chart"].map(
+              (weekData) => weekData.Total
+            ),
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(255, 159, 64, 0.5)",
+              "rgba(255, 205, 86, 0.5)",
+              "rgba(75, 192, 192, 0.5)",
+              "rgba(54, 162, 235, 0.5)",
+              "rgba(153, 102, 255, 0.5)",
+              "rgba(201, 203, 207, 0.5)",
+            ],
+          },
+        ],
+      });
     });
-    VoucherService.Get_ItemProfit(options).then((resp) => {
-      console.log(resp);
-      setTotalProfit(resp["item profit total"] + resp["service total"]);
-      setAllServices({
-        labels: resp.service.map((ser) => ser.name),
+    VoucherService.GetSales(options).then((resp) => {
+      setHorizontalBarChartData({
+        labels: resp?.gp_chart.map((gpChart) => gpChart.Category),
+        datasets: [
+          {
+            label: "General Purchase Breakdown",
+            data: resp.gp_chart.map((gpChart) => gpChart.Total),
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(255, 159, 64, 0.5)",
+              "rgba(255, 205, 86, 0.5)",
+              "rgba(75, 192, 192, 0.5)",
+              "rgba(54, 162, 235, 0.5)",
+              "rgba(153, 102, 255, 0.5)",
+              "rgba(201, 203, 207, 0.5)",
+            ],
+          },
+        ],
+      });
+      setPieChartData({
+        labels: ["emp salary", "genearl purchases"],
         datasets: [
           {
             label: "Services",
-            data: resp.service.map((ser) => ser.price),
+            data: [resp["emp salary"], resp["general purchase"]],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(255, 159, 64, 0.5)",
+              "rgba(255, 205, 86, 0.5)",
+              "rgba(75, 192, 192, 0.5)",
+              "rgba(54, 162, 235, 0.5)",
+              "rgba(153, 102, 255, 0.5)",
+              "rgba(201, 203, 207, 0.5)",
+            ],
+          },
+        ],
+      });
+      setPieChartData({
+        labels: ["emp salary", "genearl purchases"],
+        datasets: [
+          {
+            label: "Services",
+            data: [resp["emp salary"], resp["general purchase"]],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(255, 159, 64, 0.5)",
+              "rgba(255, 205, 86, 0.5)",
+              "rgba(75, 192, 192, 0.5)",
+              "rgba(54, 162, 235, 0.5)",
+              "rgba(153, 102, 255, 0.5)",
+              "rgba(201, 203, 207, 0.5)",
+            ],
+          },
+        ],
+      });
+      const filterdResponse = Object.keys(resp).filter(
+        (key) =>
+          key !== "emp salary" &&
+          key !== "general purchase" &&
+          key !== "gp_chart"
+      );
+      const newObj = {};
+      filterdResponse.forEach((key) => {
+        newObj[key] = resp[key];
+      });
+      setDashboardTopResponse(newObj);
+    });
+
+    VoucherService.Get_ItemProfit(options).then((resp) => {
+      setTotalProfit(resp["item profit total"] + resp["service total"]);
+      setAllServices({
+        labels: resp?.service.map((ser) => ser.name),
+        datasets: [
+          {
+            label: "Services",
+            data: resp?.service.map((ser) => ser.price),
             backgroundColor: [
               "rgba(255, 99, 132, 0.5)",
               "rgba(255, 159, 64, 0.5)",
@@ -46,7 +143,7 @@ function Dashboard() {
       setAllItems({
         response: resp,
         itemResponse: {
-          labels: resp.item.map((itm) => itm.name),
+          labels: resp?.item.map((itm) => itm.name),
           datasets: [
             {
               label: "Items",
@@ -66,10 +163,9 @@ function Dashboard() {
       });
     });
   }, [options]);
-
+  console.log(weeklyChartData);
   const switchHandle = () => {
     setItemIncome((prev) => !prev);
-
     itemIncome
       ? setAllItems((prev) => ({
           ...prev,
@@ -114,7 +210,7 @@ function Dashboard() {
           },
         }));
   };
-
+  console.log(weeklyChartData);
   return (
     <div className="dashboard_wrapper">
       <div className="filter-container">
@@ -129,6 +225,10 @@ function Dashboard() {
         <div className="radio-container" onClick={() => setOptions("month")}>
           <p>Month</p>
           <input type="radio" checked={options === "month"} />
+        </div>
+        <div className="radio-container" onClick={() => setOptions("all")}>
+          <p>All</p>
+          <input type="radio" checked={options === "all"} />
         </div>
       </div>
       <div className="dashboard_top">
@@ -151,35 +251,42 @@ function Dashboard() {
       </div>
       {allServices ? (
         <>
-          {/* <div className="charts_wrapper">
-            <div className="chart_wrapper">
-              <LineChart chartData={allServices} />
-              <h3>Monthly income</h3>
-            </div>
-            <div className="chart_wrapper">
-              <BarChart chartData={allServices} />
-              <h3>Monthly income</h3>
-            </div>
-          </div> */}
-          <button
-            onClick={() => {
-              console.log("switchHandle");
-              switchHandle();
-            }}
-          >
-            Switch
-          </button>
           <div className="charts_wrapper">
             <div className="chart_wrapper">
+              <p>
+                {itemIncome
+                  ? allItems?.response["item total"]
+                  : allItems?.response["item profit total"]}
+              </p>
+              <button
+                onClick={() => {
+                  console.log("switchHandle");
+                  switchHandle();
+                }}
+              >
+                Switch
+              </button>
               <DoughnutChart chartData={allItems.itemResponse} />
               <h3>{itemIncome ? "Item Income" : "Item Profit"}</h3>
             </div>
             <div className="chart_wrapper">
-              <DoughnutChart chartData={allServices} />
-              <h3>Service Income</h3>
+              <BarChart chartData={allServices} />
+            </div>
+            <div className="chart_wrapper">
+              <PieChart chartData={pieChartData} />
+              <h3>Cost breakdown</h3>
+            </div>
+            <div className="chart_wrapper">
+              <HorizontalBarChart chartData={horizontalBarChartData} />
             </div>
           </div>
         </>
+      ) : null}
+
+      {weeklyChartData ? (
+        <div className="chart_wrapper_bottom">
+          <LineChart chartData={weeklyChartData} />
+        </div>
       ) : null}
     </div>
   );

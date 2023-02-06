@@ -29,6 +29,12 @@ function MinusTables() {
           path="itemPurchases"
           minus
         />
+        <TableGate
+          Icon={AiOutlineUnorderedList}
+          tableGateHeader="Income"
+          path="income"
+          minus
+        />
       </div>
     </div>
   );
