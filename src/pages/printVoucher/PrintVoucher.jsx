@@ -97,7 +97,7 @@ function PrintVoucher() {
           <div className="voucher_headerLeft">
             <img
               className="voucher_image"
-              src="https://drive.google.com/uc?export=view&id=1n0Tj_AYeT5C1nYAVST4_iSbxRHYLqVIK"
+              src="https://drive.google.com/uc?export=view&id=1Qzpc33G3r_xH6bdi2XrDgQMZg57wNgNp"
               alt="dirve image"
             />
             <div className="voucher_header">
