@@ -20,14 +20,17 @@ const VoucherOutsource = () => {
   ];
 
   const payHandle = async (e, outsourceId) => {
+    console.log('Test')
     e.stopPropagation();
     const response = await VoucherOutsourceService.UpdateVoucherOutsource(
       outsourceId
     );
+    console.log('Test2')
     const copied = [...outSources];
     setOutSources(
       copied.map((cop) => (cop.id === response.id ? response : cop))
     );
+    console.log('Test3')
   };
 
   const handleData = () => {
