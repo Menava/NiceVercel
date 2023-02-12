@@ -15,6 +15,7 @@ const VoucherOutsource = () => {
     "Price",
     "Totals",
     "Status",
+    "Paid Date",
     "Actions",
   ];
 
@@ -60,6 +61,7 @@ const VoucherOutsource = () => {
         <td>{outsource.price}</td>
         <td>{outsource.total}</td>
         <td>{outsource.status ? "Paid" : "Unpaid"}</td>
+        <td>{outsource.paid_date}</td>
         <td>
           <button
             className="table_editBtn"
