@@ -37,11 +37,16 @@ function AppNavSidebar() {
     dispatch(startLoading());
     const notes = "test";
     let servicePlace_id = 0;
-    const initChecklist_data = await InitCheckService.InsertInitCheck({
-      employee_sign: makeService.employeeSignature,
-      customer_sign: makeService.customerSignature,
-      notes: notes,
-    });
+
+    const initChecklist_data =
+      makeService.customerSignature || makeService.employeeSignature
+        ? await InitCheckService.InsertInitCheck({
+            employee_sign: makeService.employeeSignature,
+            customer_sign: makeService.customerSignature,
+            notes: notes,
+          })
+        : null;
+
     if (initChecklist_data === 500) {
       alert("Something Went Wrong");
       dispatch(finishLoading());
@@ -51,7 +56,7 @@ function AppNavSidebar() {
     makeService.errorImages.forEach((formError) => {
       InitImage_formData.append("file", formError.errorImage);
       let value_dict = {
-        initcheck_id: initChecklist_data.id,
+        initcheck_id: initChecklist_data ? initChecklist_data.id : null,
         damaged_part: formError.component,
         damage_type: formError.damageType,
       };
@@ -88,7 +93,7 @@ function AppNavSidebar() {
       const serviceplace_data = await ServicePlaceService.InsertServicePlace({
         name: makeService.servicePlace.name,
         customerCar_id: CustomerCar_data.id,
-        initChecklist_id: initChecklist_data.id,
+        initChecklist_id: initChecklist_data ? initChecklist_data.id : null,
         state: "0",
         status: "On Progress",
       });
@@ -99,7 +104,7 @@ function AppNavSidebar() {
         {
           name: makeService.servicePlace.name,
           customerCar_id: CustomerCar_data.id,
-          initChecklist_id: initChecklist_data.id,
+          initChecklist_id: initChecklist_data ? initChecklist_data.id : null,
           state: "0",
           status: "On Progress",
         }

@@ -103,17 +103,18 @@ function CreateVoucher() {
     dispatch(openEmployeeFinalSignaturePadModal());
   }
 
-  // console.log("Serivce palce service item", servicePlaceServiceItem);
-  // console.log("Serivce palce service", servicePlaceService);
-
   async function createVoucherHandle() {
     dispatch(startLoading());
-    const finalChecklist_id = await FinalCheckService.InsertFinalCheck({
-      employee_sign: modalsAndData.employeeFinalSignature,
-      customer_sign: modalsAndData.customerFinalSignature,
-      notes: customerNotes,
-      customer_rating: 1,
-    });
+    const finalChecklist_id =
+      modalsAndData.employeeFinalSignature ||
+      modalsAndData.customerFinalSignature
+        ? await FinalCheckService.InsertFinalCheck({
+            employee_sign: modalsAndData.employeeFinalSignature,
+            customer_sign: modalsAndData.customerFinalSignature,
+            notes: customerNotes,
+            customer_rating: 1,
+          })
+        : null;
     if (finalChecklist_id === 500) {
       alert("Something went wrong");
       dispatch(finishLoading());
@@ -123,7 +124,7 @@ function CreateVoucher() {
     errorImages.forEach((formError) => {
       FinalImage_formData.append("file", formError.errorImage);
       let value_dict = {
-        initcheck_id: finalChecklist_id.id,
+        initcheck_id: finalChecklist_id ? finalChecklist_id.id : null,
         damaged_part: formError.component,
         damage_type: formError.damageType,
       };
@@ -155,7 +156,7 @@ function CreateVoucher() {
     const voucher_data = await VoucherService.InsertVoucher({
       customerCar_id: servicePlace_Data.service_place.customerCar_id,
       initChecklist_id: servicePlace_Data.service_place.initChecklist_id,
-      finalChecklist_id: finalChecklist_id.id,
+      finalChecklist_id: finalChecklist_id ? finalChecklist_id.id : null,
       total: calculateTotals(),
     });
     modalsAndData.externalItems.forEach(

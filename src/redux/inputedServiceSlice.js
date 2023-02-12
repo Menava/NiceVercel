@@ -17,11 +17,7 @@ const inputedServiceSlice = createSlice({
         data.customerPhone === "" ||
         data.customerCarNo === "" ||
         data.employeeLeader === "" ||
-        data.employees.length <= 0 ||
-        // data.frameType.name === INITIAL_DROPDOWN_VALUE.frameType ||
-        // data.servicePlace.name === INITIAL_DROPDOWN_VALUE.servicePlace ||
-        data.customerSignature === "" ||
-        data.employeeSignature === ""
+        data.employees.length <= 0
       ) {
         if (data.customerName === "")
           state.errors.customerName = "Customer name is required";
@@ -33,17 +29,6 @@ const inputedServiceSlice = createSlice({
           state.errors.employeeLeader = "Employee Leader is required";
         if (data.employees.length <= 0)
           state.errors.employees = "Employee is required";
-        // if (data.frameType.name === INITIAL_DROPDOWN_VALUE.frameType)
-        //   state.errors.frameType = "Frame Type is required";
-        // if (data.servicePlace.name === INITIAL_DROPDOWN_VALUE.servicePlace)
-        //   state.errors.servicePlace = "Service Place is required";
-        // if (data.component === INITIAL_DROPDOWN_VALUE.component)
-        //   state.errors.component = "Component is required";
-        // if (data.errorType === INITIAL_DROPDOWN_VALUE.errorType)
-        //   state.errors.errorType = "Error type is required";
-        if (data.employeeSignature === "" || data.customerSignature === "") {
-          state.errors.signature = "Both Siganture is required";
-        }
       } else {
         state.makeService = {
           customerName: data.customerName,

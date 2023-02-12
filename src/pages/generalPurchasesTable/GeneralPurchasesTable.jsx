@@ -121,7 +121,7 @@ function GeneralPurchasesTable({
       <Table
         addButtonName="Add General Purchase"
         // searchBy="Search By Month"
-        tablePageName="Employees Salaries Table"
+        tablePageName="General Purchases Table"
         headersList={headersList}
         serachPlaceHolder="Search purchase"
         // searchByHandle={searchByMonthHandle}

@@ -51,19 +51,11 @@ function PrepareService() {
     }
   }, [inputedService.errors, dispatch]);
 
-  // // get session data
-  // useEffect(() => {
-  //   // AppService.logout().then((resp) => console.log(resp));
-
-  //   AppService.GetSession().then((resp) => {
-  //     console.log("response Data", resp);
-  //   });
-  // }, []);
-
   function makeServiceHandle() {
-    const formData = new FormData();
-    formData.append("user-items", JSON.stringify(prepareServiceInputs));
-    AppService.SetUserItems(formData).then((resp) => console.log("gg", resp));
+    console.log("prepareServiceInputs", prepareServiceInputs);
+    // const formData = new FormData();
+    // formData.append("user-items", JSON.stringify(prepareServiceInputs));
+    // AppService.SetUserItems(formData).then((resp) => console.log("gg", resp));
     dispatch(makeService({ data: prepareServiceInputs, navigate }));
   }
 
@@ -163,7 +155,7 @@ function PrepareService() {
   }
 
   function addDummyDataHandle() {
-    const { id, name } = prepareServiceInputs.dropdownLists.frameTypes[0];
+    const { id, name } = prepareServiceInputs?.dropdownLists?.frameTypes[0];
     const dummyEmpData = employees.filter((emp) => emp.hidden !== null);
     const dummyEmpLeader = dummyEmpData[0];
     const dummyEmployees = dummyEmpData[1];
@@ -262,7 +254,7 @@ function PrepareService() {
           <div className="divEmpInsideWrapper">
             <div className="divOverFlowWrapper">
               <div className="divEmployees vertical-scroll">
-                {prepareServiceInputs.employees.map((employee) => (
+                {prepareServiceInputs?.employees.map((employee) => (
                   <EmployeeNameTag
                     employeeName={employee.name}
                     key={employee.id}

@@ -56,7 +56,10 @@ function Sidebar() {
           className="sidebar_logo"
           onClick={() => setActiveLink("Prepare Service")}
         >
-          <img src="https://drive.google.com/uc?export=view&id=1n0Tj_AYeT5C1nYAVST4_iSbxRHYLqVIK" alt="drive image"/>
+          <img
+            src="https://drive.google.com/uc?export=view&id=1n0Tj_AYeT5C1nYAVST4_iSbxRHYLqVIK"
+            alt="drive image"
+          />
           <div className="sidebar_logo_letter">
             <h1>Nice</h1>
             <p>Car workshop</p>
@@ -85,6 +88,16 @@ function Sidebar() {
           windowLoactinPath={activeLink}
           path="/serviceStatus"
         />
+
+        {position === "manager" && (
+          <SidebarNavlink
+            Icon={AiFillDatabase}
+            linkName="Tables -$"
+            windowLoactinPath={activeLink}
+            path="/-$tables/generalPurchasesTable"
+          />
+        )}
+
         {position === "admin" && (
           <>
             <h2>Lists</h2>
