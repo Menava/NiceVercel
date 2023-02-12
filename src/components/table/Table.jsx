@@ -61,12 +61,12 @@ function Table({
 
       <div className="table_searchWrapper">
         {todayData && (
-          <div>
+          <div style={{ margin: "10px" }}>
             <input
               type="checkbox"
               onChange={() => todayVoucherDataHandle((prev) => !prev)}
             />
-            <label>Today Vouchers</label>
+            <label>{todayData}</label>
           </div>
         )}
         {addButtonName && (

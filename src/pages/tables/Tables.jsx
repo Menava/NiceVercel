@@ -38,6 +38,11 @@ function Tables() {
           tableGateHeader="Supplier"
           path="suppliersTable"
         />
+        <TableGate
+          Icon={AiOutlineUnorderedList}
+          tableGateHeader="Voucher Outsource"
+          path="voucherOutsource"
+        />
       </div>
     </div>
   );

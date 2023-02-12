@@ -28,6 +28,7 @@ import WaitingListsTable from "./pages/waitingListsTable/WaitingListsTable";
 import VouDetail from "./components/vouDetail/VouDetail";
 import ItemPurchasesTable from "./pages/itemPurchasesTable/ItemPurchasesTable";
 import IncomeTable from "./pages/incomeTable/IncomeTable";
+import VoucherOutsource from "./pages/VoucherOutsource/VoucherOutsource";
 
 function Pages({
   generalPurchase,
@@ -38,6 +39,8 @@ function Pages({
   setSelectedPurchaseOptions,
   toEditGeneralPurchaseId,
   setToEditGeneralPurchaseId,
+  setSelectedBusinessOption,
+  selectedBusinessOption,
 }) {
   return (
     <div className="pages">
@@ -57,6 +60,10 @@ function Pages({
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="tables/customersTable" element={<CustomersTable />} />
           <Route path="tables/vouchersTable" element={<VouchersTable />} />
+          <Route
+            path="tables/voucherOutsource"
+            element={<VoucherOutsource />}
+          />
           <Route
             path="tables/vouchersTable/:voucherId"
             element={<VouDetail />}
@@ -82,6 +89,8 @@ function Pages({
                 setSelectedPurchaseOptions={setSelectedPurchaseOptions}
                 toEditGeneralPurchaseId={toEditGeneralPurchaseId}
                 setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
+                setSelectedBusinessOption={setSelectedBusinessOption}
+                selectedBusinessOption={selectedBusinessOption}
               />
             }
           />

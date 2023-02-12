@@ -16,7 +16,11 @@ const GeneralPurchaseModal = ({
   setSelectedPurchaseOptions,
   toEditGeneralPurchaseId,
   setToEditGeneralPurchaseId,
+  businessOptions,
+  setBusineesOptions,
   edit,
+  selectedBusinessOption,
+  setSelectedBusinessOption,
 }) => {
   const backgroundRef = useRef();
   const dispatch = useDispatch();
@@ -32,6 +36,7 @@ const GeneralPurchaseModal = ({
       unit_price: parseFloat(generalPurchase.Price),
       quantity: parseInt(generalPurchase.Quantity),
       purchase_type: selectedPurchaseOptions,
+      business_type: selectedBusinessOption,
     });
     getGeneralPurchases(dispatch);
     dispatch(closeModal());
@@ -42,12 +47,15 @@ const GeneralPurchaseModal = ({
     const Description = generalPurchase.Description;
     const Quantity = generalPurchase.Quantity;
     const UnitPrice = generalPurchase.Price;
+
     await GeneralPurchaseService.UpdateGeneralPurchase(toChangeId, {
       description: Description,
       unit_price: UnitPrice,
       quantity: Quantity,
       purchase_type: selectedPurchaseOptions,
+      business_type: selectedBusinessOption,
     });
+
     getGeneralPurchases(dispatch);
     dispatch(closeModal());
   }
@@ -80,6 +88,33 @@ const GeneralPurchaseModal = ({
               />
             </div>
           ))}
+          <label>Business Options</label>
+          <div className="purchaseOptins_wrapper">
+            {Object.keys(businessOptions).map((option, index) => (
+              <div
+                className={
+                  selectedBusinessOption === option
+                    ? " purchaseOption active"
+                    : "purchaseOption"
+                }
+                key={index}
+                onClick={() => {
+                  const newObj = { ...businessOptions };
+                  Object.keys(newObj).forEach((obj) => {
+                    if (obj === option) {
+                      newObj[obj] = obj;
+                      setSelectedBusinessOption(obj);
+                    } else {
+                      newObj[obj] = "";
+                    }
+                  });
+                  setBusineesOptions(newObj);
+                }}
+              >
+                <p>{option}</p>
+              </div>
+            ))}
+          </div>
           <label>Purchase Options</label>
           <div className="purchaseOptins_wrapper">
             {Object.keys(purchaseOptions).map((option, index) => (

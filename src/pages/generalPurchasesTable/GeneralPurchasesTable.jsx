@@ -18,12 +18,15 @@ function GeneralPurchasesTable({
   setSelectedPurchaseOptions,
   toEditGeneralPurchaseId,
   setToEditGeneralPurchaseId,
+  selectedBusinessOption,
+  setSelectedBusinessOption,
 }) {
   const headersList = [
     "No",
     "Id",
     "General Purchase",
     "Type",
+    "Business",
     "Quantity",
     "Price",
     "Amount",
@@ -59,7 +62,8 @@ function GeneralPurchasesTable({
     quantity,
     unitPrice,
     purchaseType,
-    toEditId
+    toEditId,
+    businessType
   ) {
     dispatch(openEditGeneralPurchaseModal());
     setGeneralPurchase({
@@ -68,6 +72,7 @@ function GeneralPurchasesTable({
       Quantity: quantity,
     });
     setSelectedPurchaseOptions(purchaseType);
+    setSelectedBusinessOption(businessType);
     setToEditGeneralPurchaseId(toEditId);
   }
 
@@ -86,6 +91,7 @@ function GeneralPurchasesTable({
         <td>{gp.id}</td>
         <td>{gp.description}</td>
         <td>{gp.purchase_type}</td>
+        <td>{gp.business_type}</td>
         <td>{gp.quantity}</td>
         <td>{gp.unit_price}</td>
         <td>{gp.total}</td>
@@ -99,7 +105,8 @@ function GeneralPurchasesTable({
                 gp.quantity,
                 gp.unit_price,
                 gp.purchase_type,
-                gp.id
+                gp.id,
+                gp.business_type
               )
             }
           >

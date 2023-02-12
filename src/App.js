@@ -85,9 +85,11 @@ function App() {
   const addEmployeePrepareServiceRef = useRef();
   const inputedService = useSelector((state) => state.inputedService);
   const [openNoti, setOpenNoti] = useState(false);
+
   function closeModalHandle(e) {
     e.target === addEmployeePrepareServiceRef.current && dispatch(closeModal());
   }
+
   const [generalPurchase, setGeneralPurchase] = useState({
     Description: "",
     Price: "",
@@ -102,6 +104,13 @@ function App() {
     Donation: "",
     "Health Care": "",
   });
+
+  const [businessOptions, setBusinessOptions] = useState({
+    CarWorkshop: "",
+    CarWash: "",
+  });
+
+  const [selectedBusinessOption, setSelectedBusinessOption] = useState("");
 
   const [selectedPurchaseOptions, setSelectedPurchaseOptions] = useState("");
   const [toEditGeneralPurchaseId, setToEditGeneralPurchaseId] = useState("");
@@ -540,8 +549,12 @@ function App() {
                   setGeneralPurchase={setGeneralPurchase}
                   purchaseOptions={purchaseOptions}
                   setPurchaseOptions={setPurchaseOptions}
+                  businessOptions={businessOptions}
+                  setBusineesOptions={setBusinessOptions}
                   selectedPurchaseOptions={selectedPurchaseOptions}
                   setSelectedPurchaseOptions={setSelectedPurchaseOptions}
+                  selectedBusinessOption={selectedBusinessOption}
+                  setSelectedBusinessOption={setSelectedBusinessOption}
                   toEditGeneralPurchaseId={toEditGeneralPurchaseId}
                   setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
                   buttonName="Add General Purchase"
@@ -638,7 +651,11 @@ function App() {
                   purchaseOptions={purchaseOptions}
                   setPurchaseOptions={setPurchaseOptions}
                   selectedPurchaseOptions={selectedPurchaseOptions}
+                  businessOptions={businessOptions}
+                  setBusineesOptions={setBusinessOptions}
                   setSelectedPurchaseOptions={setSelectedPurchaseOptions}
+                  selectedBusinessOption={selectedBusinessOption}
+                  setSelectedBusinessOption={setSelectedBusinessOption}
                   toEditGeneralPurchaseId={toEditGeneralPurchaseId}
                   setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
                   buttonName="Edit General Purchase"
@@ -821,8 +838,12 @@ function App() {
                 setPurchaseOptions={setPurchaseOptions}
                 selectedPurchaseOptions={selectedPurchaseOptions}
                 setSelectedPurchaseOptions={setSelectedPurchaseOptions}
+                businessOptions={businessOptions}
+                setBusineesOptions={setBusinessOptions}
                 toEditGeneralPurchaseId={toEditGeneralPurchaseId}
                 setToEditGeneralPurchaseId={setToEditGeneralPurchaseId}
+                selectedBusinessOption={selectedBusinessOption}
+                setSelectedBusinessOption={setSelectedBusinessOption}
               />
             </div>
           </div>

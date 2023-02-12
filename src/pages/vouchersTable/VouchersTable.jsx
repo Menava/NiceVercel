@@ -107,7 +107,7 @@ function VouchersTable() {
   return (
     <div className="voucher">
       <Table
-        todayData="Something"
+        todayData="Today Vouchers"
         todayVoucherDataHandle={setShowTodayVoucher}
         tablePageName="Vouchers table"
         headersList={headersList}
