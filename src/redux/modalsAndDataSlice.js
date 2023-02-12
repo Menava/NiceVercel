@@ -2,7 +2,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 const INITIAL_INCOMES_OPTIONS = [
-  { option: "Something1", selected: false },
+  { option: "General Income", selected: false },
   { option: "Something2", selected: false },
   { option: "Something3", selected: false },
 ];
